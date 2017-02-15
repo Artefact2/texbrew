@@ -1,9 +1,9 @@
-dnd-5e/assets/ext/*
 !dnd-5e/assets/ext/.empty_file
-dnd-5e/*.tex
 !dnd-5e/skel*.tex
 *.aux
 *.log
-*.pdf
-*.toc
 *.out
+*.toc
+dnd-5e/*.pdf
+dnd-5e/*.tex
+dnd-5e/assets/ext/*

@@ -39,6 +39,20 @@
   BoldItalicFont = * Bold Italic,
 ]{Nodesto Caps Condensed}
 
+\newfontfamily\scaly[
+  Path = ./assets/fonts/,
+  Extension = .otf,
+  UprightFont = *,
+  BoldFont = * Bold,
+  ItalicFont = * Italic,
+  BoldItalicFont = * Bold Italic,
+  SmallCapsFont = * Caps,
+  SmallCapsFeatures = {Letters = SmallCaps},
+  BoldFeatures = {SmallCapsFont=* Caps Bold, Letters=SmallCaps},
+  ItalicFeatures = {SmallCapsFont=* Caps Italic, Letters=SmallCaps},
+  BoldItalicFeatures = {SmallCapsFont=* Caps Bold Italic, Letters=SmallCaps},
+]{Scaly Sans}
+
 % The main font doesn't have whatever itemize uses by default.
 % How many levels are there?
 \renewcommand*{\labelitemi}{$—$}

@@ -25,14 +25,17 @@
 \usepackage[percent]{overpic}
 \usepackage{hyperref}
 \usepackage{lipsum}
+\usepackage{environ}
 
 \definecolor{chapter}{RGB}{88, 23, 13}
 \definecolor{subsecrule}{RGB}{211, 169, 98}
 \definecolor{footer}{RGB}{128, 110, 76}
+\definecolor{note}{RGB}{224, 229, 193}
 
 \input{inc/fonts}
 \input{inc/sectioning}
 \input{inc/layout}
+\input{inc/notes}
 
 \newcommand*{\phLettrine}[2]{\lettrine[lines=6,nindent=0pt]{{\solberaimitation #1}}{#2}}
 \newcommand*{\phLettrined}[2]{\lettrine[lines=6,depth=1,nindent=0pt]{{\solberaimitation #1}}{#2}}
