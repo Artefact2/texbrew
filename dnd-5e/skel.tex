@@ -1,0 +1,62 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\input{inc/root}
+
+\begin{document}
+
+\frontmatter
+
+\renewcommand{\hbTitle}{Placeholder Title \protect\\ That is kind of long}
+\renewcommand{\hbSubtitle}{This skeleton file created by Artefact2. \protect\\ \url{https://github.com/Artefact2/texbrew/}}
+\renewcommand*{\hbCoverFile}{assets/samples/cover}
+\hbMakecover
+
+% Use assets/background if you don't want a cover. You can put your
+% own assets under assets/ext/.
+\renewcommand*{\hbSubcoverFile}{assets/samples/cover2}
+\hbMakesubcover
+
+\paragraph*{Acknowledgments} {\footnotesize \lipsum[100-101]}
+
+\paragraph*{Credits}
+
+{\footnotesize
+\begin{itemize}
+\input{assets/CREDITS.tex}
+\input{assets/samples/CREDITS.tex} % You can probably omit this if you don't use any of the sample assets
+% Add your own credits here
+\end{itemize}}
+
+\clearpage
+\tableofcontents*
+
+\mainmatter
+
+\phRootChapter{Preface}
+
+\chaplettrine{D}{onec metus metus.} \lipsum[104-108]
+
+\phRootChapter{Introduction}
+
+\chaplettrine{S}{uspendisse in odio.} \lipsum[110-115]
+
+\section*{Libero eget} \lipsum[116-118]
+\section*{Nam eros} \lipsum[119-120]
+\subsection*{Donec eleifend} \lipsum[120-123]
+\subsection*{Vitae metus} \lipsum[124-125]
+
+% Separating large parts, or chapters may help speed up
+% compilation. Do your own experiments.
+\include{skel-part1}
+\include{skel-part2}
+
+\phAppendix
+
+\phRootAppendix{An appendix} \lipsum[126]
+
+\backmatter
+
+\phRootChapter{Closing thoughts} \lipsum[127]
+
+\end{document}

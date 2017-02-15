@@ -1,0 +1,52 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% Author: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
+% 
+% This program is free software. It comes without any warranty, to the
+% extent permitted by applicable law. You can redistribute it and/or
+% modify it under the terms of the Do What The Fuck You Want To Public
+% License, Version 2, as published by Sam Hocevar. See
+% http://sam.zoy.org/wtfpl/COPYING for more details.
+
+\ifdefined\isdraft
+\documentclass[10pt,a4paper,draft,twocolumn]{memoir}
+\else
+\documentclass[10pt,a4paper,twocolumn]{memoir}
+\fi
+\usepackage{xltxtra}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xcolor}
+\usepackage{background}
+\usepackage{calc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{lettrine}
+\usepackage[percent]{overpic}
+\usepackage{hyperref}
+\usepackage{lipsum}
+
+\definecolor{chapter}{RGB}{88, 23, 13}
+\definecolor{subsecrule}{RGB}{211, 169, 98}
+\definecolor{footer}{RGB}{128, 110, 76}
+
+\input{inc/fonts}
+\input{inc/sectioning}
+\input{inc/layout}
+
+\newcommand*{\chaplettrine}[2]{\lettrine[lines=6,nindent=0pt]{{\solberaimitation #1}}{#2}}
+\newcommand*{\chaplettrined}[2]{\lettrine[lines=6,depth=1,nindent=0pt]{{\solberaimitation #1}}{#2}}
+\renewcommand*{\LettrineTextFont}{\mreaves}
+
+% StrokeColor, FillColor, RestoreColor, StrokeWidth, Text
+\newcommand*{\fillstroke}[5]{%
+% this is black magic
+% ref: http://tex.stackexchange.com/a/225639/125447
+% Tr: rendering mode (0=Fill, 1=Stroke, 2=FillThenStroke)
+% w: stroke width
+\special{pdf:bcolor #1 #2}%
+\special{pdf:literal direct #4 w 2 Tr}%
+#5%
+\special{pdf:bcolor #3}%
+\special{pdf:literal direct 0 Tr}%
+}
