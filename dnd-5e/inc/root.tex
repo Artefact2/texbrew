@@ -21,11 +21,15 @@
 \usepackage{background}
 \usepackage{calc}
 \usepackage[absolute,overlay]{textpos}
+\usepackage{zref-savepos}
 \usepackage{lettrine}
 \usepackage[percent]{overpic}
 \usepackage{hyperref}
 \usepackage{lipsum}
 \usepackage{environ}
+
+\newcommand{\zx}[1]{\zposx{#1}sp}
+\newcommand{\zy}[1]{\paperheight-\zposy{#1}sp}
 
 \definecolor{chapter}{RGB}{88, 23, 13}
 \definecolor{subsecrule}{RGB}{211, 169, 98}

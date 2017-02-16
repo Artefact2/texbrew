@@ -9,23 +9,79 @@
 % License, Version 2, as published by Sam Hocevar. See
 % http://sam.zoy.org/wtfpl/COPYING for more details.
 
-\newlength{\phCurparskip}
-\newlength{\phCurparindent}
+\newlength{\phNoteCurparskip}
+\newlength{\phNoteCurparindent}
+\newlength{\phNotePrevSubsubsectionSkip}
+\newlength{\phNotePrevParagraphSkip}
+\newlength{\phNoteBW}
+\newlength{\phNoteBH}
+\newlength{\phNotePadding}
+\newlength{\phNoteBoxHeight}
+\newlength{\phNoteBoxDepth}
+\newsavebox{\phNoteBox}
+\newcounter{phNoteCounter}
+
+\setlength{\phNoteBW}{1pt}
+\setlength{\phNoteBH}{6pt}
+\setlength{\phNotePadding}{2pt}
 
 \newcommand*{\phNotePrevSubsubsectionStyle}{}
 \newcommand*{\phNotePrevParagraphStyle}{}
 
-\NewEnviron{phNote}{
-  \setlength{\phCurparskip}{\parskip}
-  \setlength{\phCurparindent}{\parindent}
-  \renewcommand*{\phNotePrevSubsubsectionStyle}{\subsubsecheadstyle}
-  \renewcommand*{\phNotePrevParagraphStyle}{\paraheadstyle}
-  \setsubsubsecheadstyle{\vspace*{-12pt}\scaly\large\bfseries\scshape}
-  \setparaheadstyle{\scaly\bfseries}
-  % XXX: why -1.4pt?
-  \noindent\scalebox{1}[-1]{\includegraphics[width=\columnwidth,height=6pt]{assets/note}}\vspace*{-1.4pt}\nopagebreak\\%
-  \noindent\colorbox{note}{\hspace{2pt}\begin{minipage}{\columnwidth-4pt-2\fboxsep}\setlength{\parskip}{\phCurparskip}\setlength{\parindent}{\phCurparindent}\noindent\scaly\small\BODY\end{minipage}\hspace{2pt}}\vspace*{-1.4pt}\nopagebreak\\%
-  \noindent\includegraphics[width=\columnwidth,height=6pt]{assets/note}\vspace*{4pt}
-  \setsubsubsecheadstyle{\phNotePrevSubsubsectionStyle}
-  \setparaheadstyle{\phNotePrevParagraphStyle}
+\newcommand*{\phNotePos}{}
+
+\newcommand*{\phNoteSetStyles}{%
+  \setlength{\phNoteCurparskip}{\parskip}%
+  \setlength{\phNoteCurparindent}{\parindent}%
+  \renewcommand*{\phNotePrevSubsubsectionStyle}{\subsubsecheadstyle}%
+  \renewcommand*{\phNotePrevParagraphStyle}{\paraheadstyle}%
+  \setlength{\phNotePrevSubsubsectionSkip}{\beforesubsubsecskip}%
+  \setlength{\phNotePrevParagraphSkip}{\beforeparaskip}%
+  \setsubsubsecheadstyle{\scaly\large\bfseries\scshape}%
+  \setparaheadstyle{\scaly\bfseries}%
+  \setbeforesubsubsecskip{0pt}%
+  \setbeforeparaskip{0pt}%
+}
+
+\newcommand*{\phNoteRestoreStyles}{%
+  \setsubsubsecheadstyle{\phNotePrevSubsubsectionStyle}%
+  \setparaheadstyle{\phNotePrevParagraphStyle}%
+  \setbeforesubsubsecskip{\phNotePrevSubsubsectionSkip}%
+  \setbeforeparaskip{\phNotePrevParagraphSkip}%
+}
+
+\NewEnviron{phNote}{%
+  \phNoteSetStyles%
+  \sbox{\phNoteBox}{%
+    \colorbox{note}{%
+      \hspace*{\phNotePadding}\begin{minipage}[b]{\columnwidth-2\phNotePadding-2\phNoteBW-2\fboxsep}%
+        \setlength{\parskip}{\phNoteCurparskip}
+        \setlength{\parindent}{\phNoteCurparindent}
+        \noindent\scaly\small\BODY
+      \end{minipage}%
+      \hspace*{\phNotePadding}%
+    }%
+  }%
+  \settoheight{\phNoteBoxHeight}{\usebox{\phNoteBox}}%
+  \settodepth{\phNoteBoxDepth}{\usebox{\phNoteBox}}%
+  \medbreak%
+  \vspace*{\phNoteBH}%
+  \renewcommand*{\phNotePos}{phNotePos\arabic{phNoteCounter}}%
+  \noindent\hspace*{\phNoteBW}\zsavepos{\phNotePos}\usebox{\phNoteBox}%
+  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}-\phNoteBoxHeight-\phNoteBH)
+    \scalebox{1}[-1]{\includegraphics[width=\columnwidth-2\phNoteBW,height=\phNoteBH]{assets/note}}
+  \end{textblock*}%
+  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}+\phNoteBoxDepth)
+    \includegraphics[width=\columnwidth-2\phNoteBW,height=\phNoteBH]{assets/note}
+  \end{textblock*}%
+  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent-\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
+    \includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}
+  \end{textblock*}%
+  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent+\columnwidth-2\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
+    \reflectbox{\includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}}
+  \end{textblock*}%
+  \vspace*{\phNoteBH}%
+  \medbreak%
+  \phNoteRestoreStyles%
+  \stepcounter{phNoteCounter}%
 }
