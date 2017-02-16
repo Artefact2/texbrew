@@ -45,15 +45,16 @@
 \newcommand*{\phLettrined}[2]{\lettrine[lines=6,depth=1,nindent=0pt]{{\solberaimitation #1}}{#2}}
 \renewcommand*{\LettrineTextFont}{\mreaves}
 
-% StrokeColor, FillColor, RestoreColor, StrokeWidth, Text
-\newcommand*{\fillstroke}[5]{%
+% StrokeColor, FillColor, StrokeWidth, Text
+\newcommand*{\fillstroke}[4]{%
 % this is black magic
 % ref: http://tex.stackexchange.com/a/225639/125447
 % Tr: rendering mode (0=Fill, 1=Stroke, 2=FillThenStroke)
 % w: stroke width
 \special{pdf:bcolor #1 #2}%
-\special{pdf:literal direct #4 w 2 Tr}%
-#5%
-\special{pdf:bcolor #3}%
+\special{pdf:literal direct #3 w 2 Tr}%
+#4%
+% ref: http://project.ktug.org/dvipdfmx/doc/tug2005.pdf
+\special{pdf:ecolor}%
 \special{pdf:literal direct 0 Tr}%
 }
