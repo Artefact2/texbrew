@@ -54,14 +54,16 @@
 \setaftersecskip{1pt}
 
 % Subsections
-\newcommand{\ruledsubsec}[1]{
-  \color{chapter}\Huge\mreaves\noindent\begin{minipage}{\columnwidth} #1 \color{subsecrule} \rule[22pt]{\columnwidth}{1pt} \end{minipage} \vspace*{-30pt}
-}
+\newcommand{\ruledsubsec}[1]{\color{chapter}\Huge\mreaves\noindent\begin{minipage}{\columnwidth}#1\color{subsecrule}\vspace*{1pt}\rule[\baselineskip]{\columnwidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{-2pt}}
 \setsubsecheadstyle{\ruledsubsec}
 
 % Subsubsections
 \setsubsubsecheadstyle{\color{chapter}\LARGE\mreaves}
 \setaftersubsubsecskip{1pt}
+
+% Paragraphs and subparagraphs
+\setafterparaskip{-3pt}
+\setaftersubparaskip{-3pt}
 
 % Table of Contents
 \twocoltocetc
