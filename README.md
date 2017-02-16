@@ -38,6 +38,6 @@ Todo
 
 * part pages
 * tables
-* notes
 * how to include figures and not mess up everything?
 * proper footer marks
+* fix bugs
