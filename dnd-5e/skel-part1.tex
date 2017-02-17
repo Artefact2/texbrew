@@ -5,7 +5,7 @@
 \phLettrine{L}{orem ipsum dolor sit amet.} \lipsum[1-2]
 
 \begin{table}[!ht]
-  \caption{Vestibulum Fringilla Augue}
+  \caption{Simple Table Template}
   \begin{phTable}{CY}
     \textbf{Duis molestie} & \textbf{Maximus lobortis} \\
     1st & Dolor leo \\
@@ -13,6 +13,7 @@
     3rd & Sed varius \\
     4th & Neque lacus \\
     5th & Non odio \\
+    6th & Amet mauris
   \end{phTable}
 \end{table}
 
@@ -22,13 +23,49 @@
 \subsubsection{Posuere dictum} \lipsum[7]
 \subsection{Macenas eu purus} \lipsum[8]
 \subsubsection{Tincidunt congue} \lipsum[9]
+
+\begin{table}[!ht]
+  \caption{Narrow Spellcasting Template}
+  \begin{phTable}{Z*{6}{C}}
+    \hiderowcolors
+    \multirowcell{2}{\textbf{Lipsum} \\ \textbf{Level}} &
+    \multirowcell{2}{\textbf{Cantrips} \\ \textbf{Known}} &
+    \multirowcell{2}{\textbf{Spells} \\ \textbf{Known}} &
+    \multicolumn{4}{>{\hsize=4\hsize}C}{\footnotesize\phNone\space\textbf{Spell Slots per Spell Level}\space\phNone} \\
+    &&& \textbf{1st} & \textbf{2nd} & \textbf{3rd} & \textbf{4th} \\
+    \showrowcolors
+    1st & 2 & 3 & 1 & \phNone & \phNone & \phNone \\
+    2nd & 2 & 4 & 2 & 1 & \phNone & \phNone \\
+    3rd & 3 & 5 & 3 & 2 & 1 & \phNone \\
+    4th & 3 & 6 & 3 & 3 & 2 & 1 \\
+    5th & 3 & 7 & 3 & 3 & 3 & 2
+  \end{phTable}
+\end{table}
+
 \subsubsection{Vulputate auctor} \lipsum[10]
 \subsection{Vivamus rhoncus} \lipsum[11-12]
 
 \section{Lacinia pretium} \lipsum[13-14]
+
+\begin{table*}[!t]
+  \caption{Wide Table Template}
+  \begin{phTable}{Y*{7}{C}}
+    \textbf{Donec Ut} & \textbf{Henderit Justo} & \textbf{Quisque Mollis} & \textbf{Mauris At} &
+    \textbf{Feugiat} & \textbf{Arcu Lacus} & \textbf{Ultricies} & \textbf{Dictum Eget} \\
+    Proin eget & 20 ft. & 3 & 2 & 1 & \phNone & \phNone & \phNone \\
+    Malesuada mauris & 20 ft. & 4 & 2 & 1 & 1 & \phNone & \phNone \\
+    Aenean nunc & 25 ft. & 5 & 2 & 2 & 1 & \phNone & \phNone \\
+    Eros consectetur & 25 ft. & 6 & 3 & 2 & 2 & 1 & \phNone \\
+    Non sibh sit & 30 ft. & 7 & 3 & 3 & 2 & 1 & \phNone \\
+    Amet volutpat & 30 ft. & 8 & 3 & 3 & 3 & 2 & 1 \\
+    Orci praesent & 35 ft. & 9 & 3 & 3 & 3 & 2 & 1
+  \end{phTable}
+\end{table*}
+
 \subsection{Fermentum felis} \lipsum[15]
 \subsubsection{Conubia nostra} \lipsum[16]
 \subsubsection{Morbi vehicula} \lipsum[17]
+
 \subsection{Mauris tempor} \lipsum [18]
 \subsubsection{Integer arcu} \lipsum[19]
 \subsubsection{Luctus mauris} \lipsum[20]

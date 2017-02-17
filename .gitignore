@@ -2,6 +2,7 @@
 !dnd-5e/skel*.tex
 *.aux
 *.log
+*.lot
 *.out
 *.toc
 dnd-5e/*.pdf

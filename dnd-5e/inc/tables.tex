@@ -13,13 +13,18 @@
 \newcolumntype{C}{>{\small\scaly}c}
 \newcolumntype{R}{>{\small\scaly}r}
 \newcolumntype{Y}{>{\small\scaly}X}
+\newcolumntype{Z}{>{\small\scaly\centering\arraybackslash}X}
 
 \captionstyle{\raggedright}
 \captiondelim{}
 \captionnamefont{\fontsize{1sp}{0pt}\selectfont} % XXX: hackish
 \captiontitlefont{\scaly\scshape\bfseries\large}
 
+\newcommand*{\phTbody}{\showrowcolors}
+\newcommand*{\phThead}{\hiderowcolors}
+
 \NewEnviron{phTable}[1]{%
-  \rowcolors{2}{}{note}%
-  \medbreak\noindent\begin{tabularx}{\columnwidth}{#1}\small\scaly\BODY\end{tabularx}\medbreak%
+  \global\rownum=0%
+  \rowcolors{1}{}{note}%
+  \medbreak\noindent\begin{tabularx}{\linewidth}{#1}\BODY\end{tabularx}\medbreak%
 }

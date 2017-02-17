@@ -37,7 +37,7 @@ Todo
 ====
 
 * part pages
-* tables
-* how to include figures and not mess up everything?
+* FANCY tables
+* overflowing art
 * proper footer marks
 * fix bugs
