@@ -10,17 +10,37 @@
 % http://sam.zoy.org/wtfpl/COPYING for more details.
 
 % Parts
-\renewcommand*{\beforepartskip}{}
-\renewcommand*{\afterpartskip}{\vfil}
+\newcommand*{\hbPartCover}{assets/samples/part-cover}
+\renewcommand*{\thepart}{\arabic{part}}
+\renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
+\renewcommand*{\printpartname}{\AddThispageHook{%
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartCover}
+    \end{textblock*}%
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+      \includegraphics[width=\paperwidth]{assets/header-part-circ}
+    \end{textblock*}%
+    \begin{textblock*}{.5\paperwidth}(0pt,0pt)
+      \includegraphics[width=.5\paperwidth]{assets/header-part}
+    \end{textblock*}%
+    \begin{textblock*}{.5\paperwidth}(.5\paperwidth,0pt)
+      \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-part}}
+    \end{textblock*}%
+  }%
+  \hspace*{-8pt}\nodesto\fontsize{64pt}{64pt}\selectfont\color{chapter}PART%
+}
+\renewcommand*{\printpartnum}{\nodesto\fontsize{64pt}{64pt}\selectfont\color{chapter}\!\thepart}
+\renewcommand*{\parttitlefont}{\color{chapter}\Large\scaly\bfseries\vspace*{-18pt}\hspace*{-8pt}}
 
 % Chapters
-\newcommand*{\phChapterHeader}{%
-  \begin{textblock*}{.5\paperwidth}(0pt,0pt)
-    \includegraphics[width=.5\paperwidth]{assets/header-chapter}
-  \end{textblock*}%
-  \begin{textblock*}{.5\paperwidth}(.5\paperwidth,0pt)
-    \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-chapter}}
-  \end{textblock*}%
+\newcommand*{\phChapterHeader}{\AddThispageHook{%
+    \begin{textblock*}{.5\paperwidth}(0pt,0pt)%
+      \includegraphics[width=.5\paperwidth]{assets/header-chapter}
+    \end{textblock*}%
+    \begin{textblock*}{.5\paperwidth}(.5\paperwidth,0pt)%
+      \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-chapter}}
+    \end{textblock*}%
+  }%
 }
 \renewcommand*{\chaptitlefont}{\color{chapter}\HUGE\mreaves}
 \renewcommand*{\printchaptername}{}
@@ -31,7 +51,7 @@
 \makeatother
 \renewcommand*{\afterchapternum}{}
 \renewcommand*{\printchapternonum}{\phChapterHeader}
-\setlength{\beforechapskip}{0pt}
+\setlength{\beforechapskip}{-30pt} % XXX ???????
 \setlength{\afterchapskip}{10pt}
 
 \newcommand*{\phRootChapter}[1]{%
@@ -73,7 +93,7 @@
 \renewcommand*{\cftpartname}{Part\space}
 \renewcommand*{\cftpartaftersnum}{:\space}
 
-\renewcommand*{\cftpartnumwidth}{25pt}
+\renewcommand*{\cftpartnumwidth}{16pt}
 \renewcommand*{\cftchapterfont}{\color{chapter}\Large\mreaves}
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
@@ -99,55 +119,53 @@
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
 \newcommand{\hbMakecover}{
-  % XXX: what is causing this 6pt of whitespace?
-  \SetBgContents{\hspace{-6pt}\begin{overpic}[width=\paperwidth,height=\paperheight]{assets/background}\put(0,0){\includegraphics[width=\paperwidth,height=\paperheight]{\hbCoverFile}}\end{overpic}}
-  \onecolumn
-  \thispagestyle{empty}
-  \begin{textblock*}{3cm}(.5\paperwidth-1.5cm,1cm)
-    \includegraphics[width=3cm]{assets/dnd-logo-initials}
-  \end{textblock*}
-  
-  \begin{textblock*}{\paperwidth-4cm}(2cm,\paperheight-4cm)
-    \begin{center}
-      \LARGE
-      % XXX: font doesn't look right
-      \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}
-    \end{center}
-  \end{textblock*}
-  
-  \vspace*{15mm}
-  
-  \begin{center}
-    \nodesto
-    \fontsize{48pt}{48pt}\selectfont
-    \fillstroke{[1]}{[0]}{1.5}{\MakeUppercase\hbTitle}
-    
-    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}
-  \end{center}
-  \clearpage
-  \twocolumn
-  \SetBgContents{\hbBackgroundContents}
+  \onecolumn%
+  \thispagestyle{empty}%
+  \AddThispageHook{%
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbCoverFile}
+    \end{textblock*}%
+    \begin{textblock*}{3cm}(.5\paperwidth-1.5cm,1cm)
+      \includegraphics[width=3cm]{assets/dnd-logo-initials}
+    \end{textblock*}%
+    \begin{textblock*}{\paperwidth-4cm}(2cm,\paperheight-4cm)
+      \begin{center}
+        \LARGE
+        % XXX: font doesn't look right
+        \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}
+      \end{center}
+    \end{textblock*}%
+  }  %
+  \vspace*{15mm}%  
+  \begin{center}%
+    \nodesto%
+    \fontsize{48pt}{48pt}\selectfont%
+    \fillstroke{[1]}{[0]}{1.5}{\MakeUppercase\hbTitle}\\*%
+    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}%
+  \end{center}%
+  \clearpage%
+  \twocolumn%
 }
 
-\newcommand{\hbMakesubcover}{
-  \SetBgContents{\hspace{-6pt}\begin{overpic}[width=\paperwidth,height=\paperheight]{assets/background}\put(0,0){\includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcoverFile}}\end{overpic}}
-  \onecolumn
-  \thispagestyle{empty}
-  \begin{textblock*}{1.5cm}(.5\paperwidth-.75cm,\paperheight-3cm)
-    \includegraphics[width=1.5cm]{assets/dnd-logo-amp}
-  \end{textblock*}
-  
-  \vspace*{15mm}
-  
-  \begin{center}
-    \nodesto
-    \fontsize{48pt}{48pt}\selectfont
-    \MakeUppercase
-    \hbTitle
-    
-    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}
+\newcommand{\hbMakesubcover}{%
+  \onecolumn%
+  \thispagestyle{empty}%
+  \AddThispageHook{
+    \begin{textblock*}{\paperwidth}(0pt,0pt)
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcoverFile}
+    \end{textblock*}%
+    \begin{textblock*}{1.5cm}(.5\paperwidth-.75cm,\paperheight-3cm)
+      \includegraphics[width=1.5cm]{assets/dnd-logo-amp}
+    \end{textblock*}%
+  }%
+  \vspace*{15mm}%
+  \begin{center}%
+    \nodesto%
+    \fontsize{48pt}{48pt}\selectfont%
+    \MakeUppercase%
+    \hbTitle\\*%
+    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}%
   \end{center}
-  \clearpage
-  \twocolumn
-  \SetBgContents{\hbBackgroundContents}
+  \clearpage%
+  \twocolumn%
 }

@@ -54,8 +54,8 @@ To start your own document:
 Todo
 ====
 
-* part pages
+* full page art decoration
 * overflowing art
 * proper footer marks
 * fix bugs
-* remove background dependency, use everypage instead, remove overlay from textpos
+* uniformise prefices (use hbFoo everywhere, not ph)

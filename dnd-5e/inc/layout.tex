@@ -22,14 +22,15 @@
 \raggedright % Messes up the indent.
 \setlength{\parindent}{1em}
 
-\backgroundsetup{angle=0,opacity=1,scale=1}
-\newcommand*{\hbBackgroundContents}{\includegraphics[width=\paperwidth,height=\paperheight]{assets/background}}
-\SetBgContents{\hbBackgroundContents}
+% XXX why is this breaking \twocolumn (will reset to one after a part) ?
+\AddEverypageHook{\begin{textblock*}{\paperwidth}(0pt,0pt)%
+    \includegraphics[width=\paperwidth,height=\paperheight]{assets/background}%
+\end{textblock*}\twocolumn}
 
-\makepagestyle{phb-regular}
-\aliaspagestyle{chapter}{phb-regular}
+\makepagestyle{phRegular}
+\aliaspagestyle{chapter}{phRegular}
 
-\makeoddfoot{phb-regular}{
+\makeoddfoot{phRegular}{
   \begin{textblock*}{\paperwidth}(0pt,\paperheight-12mm)
     \includegraphics[width=\paperwidth]{assets/footer}
   \end{textblock*}
@@ -40,7 +41,7 @@
 }{
   \color{footer}\mreaves \rightmark \hspace{.3cm}
 }
-\makeevenfoot{phb-regular}{
+\makeevenfoot{phRegular}{
   \color{footer}\mreaves \hspace{.3cm} \leftmark
 }{
   \begin{textblock*}{2cm}(47pt-2cm,\paperheight-12mm)
@@ -53,8 +54,8 @@
 }
 
 % XXX: figure this out
-%\makepsmarks{phb-regular}{
+%\makepsmarks{phRegular}{
 %  \createmark{chapter}{both}{nonumber}{}{}
 %}
 
-\pagestyle{phb-regular}
+\pagestyle{phRegular}
