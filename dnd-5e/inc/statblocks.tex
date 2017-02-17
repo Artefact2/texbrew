@@ -20,19 +20,19 @@
 \newcommand*{\phSBType}[1]{\textit{#1}}
 \newcommand*{\phSBSep}{%
   \leavevmode\\*%
-  \noindent\includegraphics[height=5pt,width=\columnwidth]{assets/stat-block-separator}\\*%
+  \noindent\includegraphics[height=5pt,width=\linewidth]{assets/stat-block-separator}\\*%
   \noindent%
 }
 \newcommand*{\phModifier}[1]{\FPeval{\result}{round((2*trunc(#1/2,0)-10)/2,0)}\ifnum\result>-1 +\result\else\result\fi}
 \newcommand*{\phSBAttributes}[6]{%
   {\color{chapter}%
-  \begin{tabularx}{\columnwidth}{@{}*{6}{>{\centering\arraybackslash}X@{}}}
+  \begin{tabularx}{\linewidth}{@{}*{6}{>{\centering\arraybackslash}X@{}}}
     \textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA} \\
     #1 (\phModifier{#1}) & #2 (\phModifier{#2}) & #3 (\phModifier{#3}) & #4 (\phModifier{#4}) & #5 (\phModifier{#5}) & #6 (\phModifier{#6})
   \end{tabularx}}%
 }
 \newcommand*{\phSBsubsec}[1]{\color{chapter}\Huge\mreaves#1\vspace*{-7pt}}
-\newcommand*{\phSBsubsubsec}[1]{\color{chapter}\LARGE\scaly\scshape\noindent\begin{minipage}{\columnwidth}#1\vspace*{1pt}\rule[\baselineskip]{\columnwidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{3pt}}
+\newcommand*{\phSBsubsubsec}[1]{\color{chapter}\LARGE\scaly\scshape\noindent\begin{minipage}{\linewidth}#1\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{3pt}}
 
 \NewEnviron{phStatBlockDescription}{%
   \renewcommand*{\phSBPrevdesclabel}{\descriptionlabel}%

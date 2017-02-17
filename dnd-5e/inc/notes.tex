@@ -67,7 +67,7 @@
   \phNoteBefore%
   \sbox{\phNoteBox}{%
     \colorbox{note}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\columnwidth-2\phNotePadding-2\phNoteBW-2\fboxsep}%
+      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteBW-2\fboxsep}%
         \setlength{\parskip}{\phNoteCurparskip}
         \setlength{\parindent}{\phNoteCurparindent}
         \noindent\scaly\small\BODY
@@ -80,16 +80,16 @@
   \settodepth{\phNoteBoxDepth}{\usebox{\phNoteBox}}%
   \vspace*{\phNoteBH}%
   \noindent\hspace*{\phNoteBW}\zsavepos{\phNotePos}\usebox{\phNoteBox}%
-  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}-\phNoteBoxHeight-\phNoteBH)
+  \begin{textblock*}{\linewidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}-\phNoteBoxHeight-\phNoteBH)
     \scalebox{1}[-1]{\includegraphics[width=\phNoteBoxWidth,height=\phNoteBH]{assets/note}}
   \end{textblock*}%
-  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}+\phNoteBoxDepth)
+  \begin{textblock*}{\linewidth}(\zx{\phNotePos}-\parindent,\zy{\phNotePos}+\phNoteBoxDepth)
     \includegraphics[width=\phNoteBoxWidth,height=\phNoteBH]{assets/note}
   \end{textblock*}%
-  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent-\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
+  \begin{textblock*}{\linewidth}(\zx{\phNotePos}-\parindent-\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
     \includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}
   \end{textblock*}%
-  \begin{textblock*}{\columnwidth}(\zx{\phNotePos}-\parindent+\phNoteBoxWidth-\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
+  \begin{textblock*}{\linewidth}(\zx{\phNotePos}-\parindent+\phNoteBoxWidth-\phNoteBW,\zy{\phNotePos}-\phNoteBoxHeight)
     \reflectbox{\includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}}
   \end{textblock*}%
   \vspace*{\phNoteBH}%
@@ -100,7 +100,7 @@
   \phNoteBefore%
   \sbox{\phNoteBox}{%
     \colorbox{white}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\columnwidth-2\phNotePadding-2\phNoteRW-2\fboxsep}%
+      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteRW-2\fboxsep}%
         \setlength{\parskip}{\phNoteCurparskip}
         \setlength{\parindent}{\phNoteCurparindent}
         \noindent\scaly\small\BODY
