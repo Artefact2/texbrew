@@ -11,6 +11,24 @@ WTFPLv2. See the `COPYING` file for more details.
 Some of the assets are released under different licenses. See the
 `CREDITS.tex` files for more details.
 
+Motivation
+==========
+
+Why create something like this? Well, T<sub>E</sub>X was *made* to
+typeset documents with perfection. As such, it takes care of difficult
+things such as:
+
+* Correct page layout (left/right pages have different margins, chapters always open on a right page, etc.);
+* Handling page breaks properly (even with multi-column text);
+* Handling floating things (narrow or wide) and placing them appropriately;
+* Keeping track of things (table of contents, references, appendices, etc.);
+* Good pagination, marks, etc;
+* And many other things we don't even think about (like autoadjusting spaces to avoid widows and orphans).
+
+Why use X<sub>Ǝ</sub>T<sub>E</sub>X ? For one, it is modern (unicode
+support out of the box) and makes it easy to use custom OpenType
+fonts (with fontspec).
+
 Demos
 =====
 
