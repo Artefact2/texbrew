@@ -37,7 +37,7 @@ Todo
 ====
 
 * part pages
-* FANCY tables
 * overflowing art
 * proper footer marks
 * fix bugs
+* remove background dependency, use everypage instead, remove overlay from textpos

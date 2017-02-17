@@ -15,16 +15,119 @@
 \newcolumntype{Y}{>{\small\scaly}X}
 \newcolumntype{Z}{>{\small\scaly\centering\arraybackslash}X}
 
+\newlength{\phTableBorderX}
+\newlength{\phTableBorderY}
+\newlength{\phTableBorderS}
+\newlength{\phTableBoxWidth}
+\newlength{\phTableBoxHeight}
+\newlength{\phTableBoxDepth}
+\newsavebox{\phTableBox}
+
+\setlength{\phTableBorderX}{10pt}
+\setlength{\phTableBorderY}{14pt}
+\setlength{\phTableBorderS}{5em}
+
+%\renewcommand{\topfraction}{.9}
+%\renewcommand{\bottomfraction}{.9}
+
 \captionstyle{\raggedright}
 \captiondelim{}
 \captionnamefont{\fontsize{1sp}{0pt}\selectfont} % XXX: hackish
 \captiontitlefont{\scaly\scshape\bfseries\large}
 
+\newcommand*{\phTCaption}[1]{{\raggedright\scaly\scshape\bfseries\large #1}\vspace*{.3\baselineskip}\\*}
+
 \newcommand*{\phTbody}{\showrowcolors}
 \newcommand*{\phThead}{\hiderowcolors}
 
-\NewEnviron{phTable}[1]{%
+\newcommand*{\phTableBefore}{%
   \global\rownum=0%
   \rowcolors{1}{}{note}%
+}
+
+\newcommand*{\phTableDrawFancyBorder}{%
+    \begin{textblock*}{\linewidth}(-\phTableBorderX,-\phTableBorderY)%
+    \scalebox{-1}[1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,-\phTableBorderY)%
+    \scalebox{1}[1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(-\phTableBorderX,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
+    \scalebox{-1}[-1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
+    \scalebox{1}[-1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(-\phTableBorderX+\phTableBorderS,-\phTableBorderY)%
+    \scalebox{1}[1]{\includegraphics[height=\phTableBorderS,width=\phTableBoxWidth-2\phTableBorderS+2\phTableBorderX]{assets/fancy-table-vert}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(-\phTableBorderX+\phTableBorderS,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
+    \scalebox{1}[-1]{\includegraphics[height=\phTableBorderS,width=\phTableBoxWidth-2\phTableBorderS+2\phTableBorderX]{assets/fancy-table-vert}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(-\phTableBorderX,-\phTableBorderY+\phTableBorderS)%
+    \scalebox{-1}[1]{\includegraphics[height=\phTableBoxHeight+\phTableBoxDepth-2\phTableBorderS+2\phTableBorderY,width=\phTableBorderS]{assets/fancy-table-horiz}}
+    \end{textblock*}%
+    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,-\phTableBorderY+\phTableBorderS)%
+    \scalebox{1}[1]{\includegraphics[height=\phTableBoxHeight+\phTableBoxDepth-2\phTableBorderS+2\phTableBorderY,width=\phTableBorderS]{assets/fancy-table-horiz}}
+    \end{textblock*}%
+}
+
+\NewEnviron{phNakedTable}[1]{%
+  \phTableBefore%
   \medbreak\noindent\begin{tabularx}{\linewidth}{#1}\BODY\end{tabularx}\medbreak%
+}
+
+\NewEnviron{phNarrowTable}[3][!ht]{%
+  \begin{table}[#1]%
+    \caption{#2}%
+    \phTableBefore%
+    \noindent\begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
+  \end{table}%
+}
+
+\NewEnviron{phWideTable}[3][t]{%
+  \begin{table*}[#1]%
+    \caption{#2}%
+    \phTableBefore%
+    \noindent\begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
+  \end{table*}%
+}
+
+\NewEnviron{phFancyTable}[3][!ht]{%
+  \begin{table}[#1]%
+    \phTableBefore%
+    \addcontentsline{lot}{table}{#2}% % XXX: links to wrong page sometimes
+    \sbox{\phTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
+    \phTCaption{#2}% % XXX: why can't \caption go inside a box?
+    \begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
+    \end{minipage}}}%
+    \settowidth{\phTableBoxWidth}{\usebox{\phTableBox}}%
+    \settoheight{\phTableBoxHeight}{\usebox{\phTableBox}}%
+    \settodepth{\phTableBoxDepth}{\usebox{\phTableBox}}%
+    \TPoptions{absolute=false}%
+    \noindent\vspace*{\phTableBorderY}%
+    \phTableDrawFancyBorder%
+    \usebox{\phTableBox}\vspace*{\phTableBorderY}%
+    \TPoptions{absolute=true}%
+  \end{table}%
+}
+
+% XXX refactor! only table* has changed compared to phFancyTable
+\NewEnviron{phFancyWideTable}[3][t]{%
+  \begin{table*}[#1]%
+    \phTableBefore%
+    \addcontentsline{lot}{table}{#2}%
+    \sbox{\phTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
+    \phTCaption{#2}%
+    \begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
+    \end{minipage}}}%
+    \settowidth{\phTableBoxWidth}{\usebox{\phTableBox}}%
+    \settoheight{\phTableBoxHeight}{\usebox{\phTableBox}}%
+    \settodepth{\phTableBoxDepth}{\usebox{\phTableBox}}%
+    \TPoptions{absolute=false}%
+    \noindent\vspace*{\phTableBorderY}%
+    \phTableDrawFancyBorder%
+    \usebox{\phTableBox}\vspace*{\phTableBorderY}%
+    \TPoptions{absolute=true}%
+  \end{table*}%
 }
