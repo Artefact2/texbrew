@@ -54,7 +54,6 @@ To start your own document:
 Todo
 ====
 
-* full page art decoration
 * overflowing art
 * fix bugs
 * uniformise prefices (use hbFoo everywhere, not ph)

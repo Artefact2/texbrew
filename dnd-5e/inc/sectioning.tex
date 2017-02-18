@@ -11,8 +11,22 @@
 
 % Parts
 \newcommand*{\hbPartCover}{assets/samples/part-cover}
+\newcommand*{\hbPartSubcover}{assets/samples/part-cover2}
+
 \renewcommand*{\thepart}{\arabic{part}}
 \renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
+\renewcommand*{\afterpartskip}{%
+  \newpage%
+  \AddThispageHook{%
+    \begin{textblock*}{\paperwidth}(0pt,0pt)%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartSubcover}
+    \end{textblock*}%
+    \begin{textblock*}{\paperwidth}(0pt,0pt)%
+      \includegraphics[width=\paperwidth,height=\paperheight]{assets/full-page-decoration}
+    \end{textblock*}%
+  }%
+  \newpage%
+}
 \renewcommand*{\printpartname}{\AddThispageHook{%
     \thispagestyle{part}%
     \begin{textblock*}{\paperwidth}(0pt,0pt)
@@ -122,8 +136,8 @@
 \renewcommand*{\cfttableindent}{0pt}
 
 % Cover page
-\newcommand*{\hbCoverFile}{assets/cover}
-\newcommand*{\hbSubcoverFile}{assets/cover2}
+\newcommand*{\hbCover}{assets/cover}
+\newcommand*{\hbSubcover}{assets/cover2}
 \newcommand{\hbTitle}{Title. Renew me!}
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
@@ -132,7 +146,7 @@
   \thispagestyle{empty}%
   \AddThispageHook{%
     \begin{textblock*}{\paperwidth}(0pt,0pt)
-      \includegraphics[width=\paperwidth,height=\paperheight]{\hbCoverFile}
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbCover}
     \end{textblock*}%
     \begin{textblock*}{3cm}(.5\paperwidth-1.5cm,1cm)
       \includegraphics[width=3cm]{assets/dnd-logo-initials}
@@ -161,7 +175,7 @@
   \thispagestyle{empty}%
   \AddThispageHook{
     \begin{textblock*}{\paperwidth}(0pt,0pt)
-      \includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcoverFile}
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcover}
     \end{textblock*}%
     \begin{textblock*}{1.5cm}(.5\paperwidth-.75cm,\paperheight-3cm)
       \includegraphics[width=1.5cm]{assets/dnd-logo-amp}
