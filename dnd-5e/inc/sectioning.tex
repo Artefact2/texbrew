@@ -14,6 +14,7 @@
 \renewcommand*{\thepart}{\arabic{part}}
 \renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
 \renewcommand*{\printpartname}{\AddThispageHook{%
+    \thispagestyle{part}%
     \begin{textblock*}{\paperwidth}(0pt,0pt)
       \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartCover}
     \end{textblock*}%
