@@ -54,9 +54,10 @@
   \end{textblock*}
 }
 
-% XXX: figure this out
-%\makepsmarks{phRegular}{
-%  \createmark{chapter}{both}{nonumber}{}{}
-%}
+\makepsmarks{phRegular}{
+\renewcommand*{\partmark}[1]{\markboth{part \thepart\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{##1}}{part \thepart\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{##1}}}
+\renewcommand*{\chaptermark}[1]{\partmark{##1}}
+\renewcommand*{\sectionmark}[1]{}
+}
 
 \pagestyle{phRegular}

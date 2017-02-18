@@ -56,6 +56,5 @@ Todo
 
 * full page art decoration
 * overflowing art
-* proper footer marks
 * fix bugs
 * uniformise prefices (use hbFoo everywhere, not ph)

@@ -61,7 +61,15 @@
   \markboth{#1}{#1}
 }
 
-\newcommand*{\phAppendix}{\appendix\settocdepth{part}}
+\newcommand*{\phAppendix}{%
+  \appendix%
+  \settocdepth{part}%
+  \makepsmarks{phRegular}{%
+    \renewcommand*{\chaptermark}[1]{\markboth{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}}%
+    \renewcommand*{\sectionmark}[1]{}%
+  }%
+  \pagestyle{phRegular}%
+}
 
 \newcommand*{\phRootAppendix}[1]{%
   \chapter{#1}
