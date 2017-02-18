@@ -27,11 +27,11 @@
     \includegraphics[width=\paperwidth,height=\paperheight]{assets/background}%
 \end{textblock*}\twocolumn}
 
-\makepagestyle{phRegular}
-\aliaspagestyle{chapter}{phRegular}
-\aliaspagestyle{part}{phRegular}
+\makepagestyle{hbRegular}
+\aliaspagestyle{chapter}{hbRegular}
+\aliaspagestyle{part}{hbRegular}
 
-\makeoddfoot{phRegular}{
+\makeoddfoot{hbRegular}{
   \begin{textblock*}{\paperwidth}(0pt,\paperheight-12mm)
     \includegraphics[width=\paperwidth]{assets/footer}
   \end{textblock*}
@@ -42,7 +42,7 @@
 }{
   \color{footer}\mreaves \rightmark \hspace{.3cm}
 }
-\makeevenfoot{phRegular}{
+\makeevenfoot{hbRegular}{
   \color{footer}\mreaves \hspace{.3cm} \leftmark
 }{
   \begin{textblock*}{2cm}(47pt-2cm,\paperheight-12mm)
@@ -54,10 +54,10 @@
   \end{textblock*}
 }
 
-\makepsmarks{phRegular}{
+\makepsmarks{hbRegular}{
 \renewcommand*{\partmark}[1]{\markboth{part \thepart\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{##1}}{part \thepart\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{##1}}}
 \renewcommand*{\chaptermark}[1]{\partmark{##1}}
 \renewcommand*{\sectionmark}[1]{}
 }
 
-\pagestyle{phRegular}
+\pagestyle{hbRegular}

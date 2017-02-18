@@ -48,7 +48,7 @@
 \renewcommand*{\parttitlefont}{\color{chapter}\Large\scaly\bfseries\vspace*{-18pt}\hspace*{-8pt}}
 
 % Chapters
-\newcommand*{\phChapterHeader}{\AddThispageHook{%
+\newcommand*{\hbChapterHeader}{\AddThispageHook{%
     \begin{textblock*}{.5\paperwidth}(0pt,0pt)%
       \includegraphics[width=.5\paperwidth]{assets/header-chapter}
     \end{textblock*}%
@@ -62,30 +62,30 @@
 \renewcommand*{\chapternamenum}{}
 \renewcommand*{\chapnumfont}{\chaptitlefont}
 \makeatletter
-\renewcommand*{\printchapternum}{\phChapterHeader\chapnumfont \@chapapp\space\thechapter:\space}
+\renewcommand*{\printchapternum}{\hbChapterHeader\chapnumfont \@chapapp\space\thechapter:\space}
 \makeatother
 \renewcommand*{\afterchapternum}{}
-\renewcommand*{\printchapternonum}{\phChapterHeader}
+\renewcommand*{\printchapternonum}{\hbChapterHeader}
 \setlength{\beforechapskip}{-30pt} % XXX ???????
 \setlength{\afterchapskip}{10pt}
 
-\newcommand*{\phRootChapter}[1]{%
+\newcommand*{\hbRootChapter}[1]{%
   \chapter*{#1}
   \addcontentsline{toc}{part}{#1}
   \markboth{#1}{#1}
 }
 
-\newcommand*{\phAppendix}{%
+\newcommand*{\hbAppendix}{%
   \appendix%
   \settocdepth{part}%
-  \makepsmarks{phRegular}{%
+  \makepsmarks{hbRegular}{%
     \renewcommand*{\chaptermark}[1]{\markboth{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}}%
     \renewcommand*{\sectionmark}[1]{}%
   }%
-  \pagestyle{phRegular}%
+  \pagestyle{hbRegular}%
 }
 
-\newcommand*{\phRootAppendix}[1]{%
+\newcommand*{\hbRootAppendix}[1]{%
   \chapter{#1}
   \addcontentsline{toc}{part}{Appendix\space\thechapter:\space#1}
   \markboth{#1}{#1}

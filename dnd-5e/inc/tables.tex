@@ -15,17 +15,17 @@
 \newcolumntype{Y}{>{\small\scaly}X}
 \newcolumntype{Z}{>{\small\scaly\centering\arraybackslash}X}
 
-\newlength{\phTableBorderX}
-\newlength{\phTableBorderY}
-\newlength{\phTableBorderS}
-\newlength{\phTableBoxWidth}
-\newlength{\phTableBoxHeight}
-\newlength{\phTableBoxDepth}
-\newsavebox{\phTableBox}
+\newlength{\hbTableBorderX}
+\newlength{\hbTableBorderY}
+\newlength{\hbTableBorderS}
+\newlength{\hbTableBoxWidth}
+\newlength{\hbTableBoxHeight}
+\newlength{\hbTableBoxDepth}
+\newsavebox{\hbTableBox}
 
-\setlength{\phTableBorderX}{10pt}
-\setlength{\phTableBorderY}{14pt}
-\setlength{\phTableBorderS}{5em}
+\setlength{\hbTableBorderX}{10pt}
+\setlength{\hbTableBorderY}{14pt}
+\setlength{\hbTableBorderS}{5em}
 
 \renewcommand*{\arraystretch}{1.1}
 
@@ -34,84 +34,84 @@
 \captionnamefont{\fontsize{1sp}{0pt}\selectfont} % XXX: hackish
 \captiontitlefont{\scaly\scshape\bfseries\large}
 
-\newcommand*{\phTableBefore}{%
+\newcommand*{\hbTableBefore}{%
   \global\rownum=0%
   \rowcolors{1}{}{note}%
 }
 
-\newcommand*{\phTableDrawFancy}{%
-    \settowidth{\phTableBoxWidth}{\usebox{\phTableBox}}%
-    \settoheight{\phTableBoxHeight}{\usebox{\phTableBox}}%
-    \settodepth{\phTableBoxDepth}{\usebox{\phTableBox}}%
+\newcommand*{\hbTableDrawFancy}{%
+    \settowidth{\hbTableBoxWidth}{\usebox{\hbTableBox}}%
+    \settoheight{\hbTableBoxHeight}{\usebox{\hbTableBox}}%
+    \settodepth{\hbTableBoxDepth}{\usebox{\hbTableBox}}%
     \TPoptions{absolute=false}%
-    \noindent\vspace*{\phTableBorderY}%
-    \begin{textblock*}{\linewidth}(-\phTableBorderX,-\phTableBorderY)%
-    \scalebox{-1}[1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \noindent\vspace*{\hbTableBorderY}%
+    \begin{textblock*}{\linewidth}(-\hbTableBorderX,-\hbTableBorderY)%
+    \scalebox{-1}[1]{\includegraphics[width=\hbTableBorderS,height=\hbTableBorderS]{assets/fancy-table-corner}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,-\phTableBorderY)%
-    \scalebox{1}[1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \begin{textblock*}{\linewidth}(\hbTableBoxWidth-\hbTableBorderS+\hbTableBorderX,-\hbTableBorderY)%
+    \scalebox{1}[1]{\includegraphics[width=\hbTableBorderS,height=\hbTableBorderS]{assets/fancy-table-corner}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(-\phTableBorderX,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
-    \scalebox{-1}[-1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \begin{textblock*}{\linewidth}(-\hbTableBorderX,\hbTableBoxHeight+\hbTableBoxDepth-\hbTableBorderS+\hbTableBorderY)%
+    \scalebox{-1}[-1]{\includegraphics[width=\hbTableBorderS,height=\hbTableBorderS]{assets/fancy-table-corner}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
-    \scalebox{1}[-1]{\includegraphics[width=\phTableBorderS,height=\phTableBorderS]{assets/fancy-table-corner}}
+    \begin{textblock*}{\linewidth}(\hbTableBoxWidth-\hbTableBorderS+\hbTableBorderX,\hbTableBoxHeight+\hbTableBoxDepth-\hbTableBorderS+\hbTableBorderY)%
+    \scalebox{1}[-1]{\includegraphics[width=\hbTableBorderS,height=\hbTableBorderS]{assets/fancy-table-corner}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(-\phTableBorderX+\phTableBorderS,-\phTableBorderY)%
-    \scalebox{1}[1]{\includegraphics[height=\phTableBorderS,width=\phTableBoxWidth-2\phTableBorderS+2\phTableBorderX]{assets/fancy-table-vert}}
+    \begin{textblock*}{\linewidth}(-\hbTableBorderX+\hbTableBorderS,-\hbTableBorderY)%
+    \scalebox{1}[1]{\includegraphics[height=\hbTableBorderS,width=\hbTableBoxWidth-2\hbTableBorderS+2\hbTableBorderX]{assets/fancy-table-vert}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(-\phTableBorderX+\phTableBorderS,\phTableBoxHeight+\phTableBoxDepth-\phTableBorderS+\phTableBorderY)%
-    \scalebox{1}[-1]{\includegraphics[height=\phTableBorderS,width=\phTableBoxWidth-2\phTableBorderS+2\phTableBorderX]{assets/fancy-table-vert}}
+    \begin{textblock*}{\linewidth}(-\hbTableBorderX+\hbTableBorderS,\hbTableBoxHeight+\hbTableBoxDepth-\hbTableBorderS+\hbTableBorderY)%
+    \scalebox{1}[-1]{\includegraphics[height=\hbTableBorderS,width=\hbTableBoxWidth-2\hbTableBorderS+2\hbTableBorderX]{assets/fancy-table-vert}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(-\phTableBorderX,-\phTableBorderY+\phTableBorderS)%
-    \scalebox{-1}[1]{\includegraphics[height=\phTableBoxHeight+\phTableBoxDepth-2\phTableBorderS+2\phTableBorderY,width=\phTableBorderS]{assets/fancy-table-horiz}}
+    \begin{textblock*}{\linewidth}(-\hbTableBorderX,-\hbTableBorderY+\hbTableBorderS)%
+    \scalebox{-1}[1]{\includegraphics[height=\hbTableBoxHeight+\hbTableBoxDepth-2\hbTableBorderS+2\hbTableBorderY,width=\hbTableBorderS]{assets/fancy-table-horiz}}
     \end{textblock*}%
-    \begin{textblock*}{\linewidth}(\phTableBoxWidth-\phTableBorderS+\phTableBorderX,-\phTableBorderY+\phTableBorderS)%
-    \scalebox{1}[1]{\includegraphics[height=\phTableBoxHeight+\phTableBoxDepth-2\phTableBorderS+2\phTableBorderY,width=\phTableBorderS]{assets/fancy-table-horiz}}
+    \begin{textblock*}{\linewidth}(\hbTableBoxWidth-\hbTableBorderS+\hbTableBorderX,-\hbTableBorderY+\hbTableBorderS)%
+    \scalebox{1}[1]{\includegraphics[height=\hbTableBoxHeight+\hbTableBoxDepth-2\hbTableBorderS+2\hbTableBorderY,width=\hbTableBorderS]{assets/fancy-table-horiz}}
     \end{textblock*}%
-    \usebox{\phTableBox}\vspace*{\phTableBorderY}%
+    \usebox{\hbTableBox}\vspace*{\hbTableBorderY}%
     \TPoptions{absolute=true}%
 }
 
-\NewEnviron{phNakedTable}[1]{%
-  \phTableBefore%
+\NewEnviron{hbNakedTable}[1]{%
+  \hbTableBefore%
   \medbreak\noindent\begin{tabularx}{\linewidth}{#1}\BODY\end{tabularx}\medbreak%
 }
 
-\NewEnviron{phNarrowTable}[3][!ht]{%
+\NewEnviron{hbNarrowTable}[3][!ht]{%
   \begin{table}[#1]%
     \caption{#2}%
-    \phTableBefore%
+    \hbTableBefore%
     \noindent\begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
   \end{table}%
 }
 
-\NewEnviron{phWideTable}[3][t]{%
+\NewEnviron{hbWideTable}[3][t]{%
   \begin{table*}[#1]%
     \caption{#2}%
-    \phTableBefore%
+    \hbTableBefore%
     \noindent\begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
   \end{table*}%
 }
 
-\NewEnviron{phFancyTable}[3][!ht]{%
+\NewEnviron{hbFancyTable}[3][!ht]{%
   \begin{table}[#1]%
-    \phTableBefore%
-    \sbox{\phTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
+    \hbTableBefore%
+    \sbox{\hbTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
     \caption{#2}%
     \begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
     \end{minipage}}}%
-    \phTableDrawFancy%
+    \hbTableDrawFancy%
   \end{table}%
 }
 
-\NewEnviron{phFancyWideTable}[3][t]{%
+\NewEnviron{hbFancyWideTable}[3][t]{%
   \begin{table*}[#1]%
-    \phTableBefore%
-    \sbox{\phTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
+    \hbTableBefore%
+    \sbox{\hbTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
     \caption{#2}%
     \begin{tabularx}{\linewidth}{#3}\BODY\end{tabularx}%
     \end{minipage}}}%
-    \phTableDrawFancy%
+    \hbTableDrawFancy%
   \end{table*}%
 }

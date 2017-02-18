@@ -9,187 +9,187 @@
 % License, Version 2, as published by Sam Hocevar. See
 % http://sam.zoy.org/wtfpl/COPYING for more details.
 
-\newlength{\phNoteCurparskip}
-\newlength{\phNoteCurparindent}
-\newlength{\phNotePrevSubsubsectionSkip}
-\newlength{\phNotePrevParagraphSkip}
-\newlength{\phNoteBW}
-\newlength{\phNoteBH}
-\newlength{\phNoteRW}
-\newlength{\phNotePS}
-\newlength{\phNotePadding}
-\newlength{\phNoteBoxWidth}
-\newlength{\phNoteBoxHeight}
-\newlength{\phNoteBoxDepth}
-\newsavebox{\phNoteBox}
+\newlength{\hbNoteCurparskip}
+\newlength{\hbNoteCurparindent}
+\newlength{\hbNotePrevSubsubsectionSkip}
+\newlength{\hbNotePrevParagraphSkip}
+\newlength{\hbNoteBW}
+\newlength{\hbNoteBH}
+\newlength{\hbNoteRW}
+\newlength{\hbNotePS}
+\newlength{\hbNotePadding}
+\newlength{\hbNoteBoxWidth}
+\newlength{\hbNoteBoxHeight}
+\newlength{\hbNoteBoxDepth}
+\newsavebox{\hbNoteBox}
 
-\setlength{\phNoteBW}{1pt} % Border width for note
-\setlength{\phNoteBH}{6pt} % Border height for note
-\setlength{\phNoteRW}{1pt} % Rule width for note2
-\setlength{\phNotePS}{3pt} % Point corner for note2
-\setlength{\phNotePadding}{2pt} % Horizontal padding inside notes
+\setlength{\hbNoteBW}{1pt} % Border width for note
+\setlength{\hbNoteBH}{6pt} % Border height for note
+\setlength{\hbNoteRW}{1pt} % Rule width for note2
+\setlength{\hbNotePS}{3pt} % Point corner for note2
+\setlength{\hbNotePadding}{2pt} % Horizontal padding inside notes
 
-\newcommand*{\phNotePrevSubsubsectionStyle}{}
-\newcommand*{\phNotePrevParagraphStyle}{}
+\newcommand*{\hbNotePrevSubsubsectionStyle}{}
+\newcommand*{\hbNotePrevParagraphStyle}{}
 
-\newcommand*{\phNoteBefore}{%
-  \setlength{\phNoteCurparskip}{\parskip}%
-  \setlength{\phNoteCurparindent}{\parindent}%
-  \renewcommand*{\phNotePrevSubsubsectionStyle}{\subsubsecheadstyle}%
-  \renewcommand*{\phNotePrevParagraphStyle}{\paraheadstyle}%
-  \setlength{\phNotePrevSubsubsectionSkip}{\beforesubsubsecskip}%
-  \setlength{\phNotePrevParagraphSkip}{\beforeparaskip}%
+\newcommand*{\hbNoteBefore}{%
+  \setlength{\hbNoteCurparskip}{\parskip}%
+  \setlength{\hbNoteCurparindent}{\parindent}%
+  \renewcommand*{\hbNotePrevSubsubsectionStyle}{\subsubsecheadstyle}%
+  \renewcommand*{\hbNotePrevParagraphStyle}{\paraheadstyle}%
+  \setlength{\hbNotePrevSubsubsectionSkip}{\beforesubsubsecskip}%
+  \setlength{\hbNotePrevParagraphSkip}{\beforeparaskip}%
   \setsubsubsecheadstyle{\scaly\large\bfseries\scshape}%
   \setparaheadstyle{\scaly\bfseries}%
   \setbeforesubsubsecskip{0pt}%
   \setbeforeparaskip{0pt}%
 }
 
-\newcommand*{\phNoteAfter}{%
-  \setsubsubsecheadstyle{\phNotePrevSubsubsectionStyle}%
-  \setparaheadstyle{\phNotePrevParagraphStyle}%
-  \setbeforesubsubsecskip{\phNotePrevSubsubsectionSkip}%
-  \setbeforeparaskip{\phNotePrevParagraphSkip}%
+\newcommand*{\hbNoteAfter}{%
+  \setsubsubsecheadstyle{\hbNotePrevSubsubsectionStyle}%
+  \setparaheadstyle{\hbNotePrevParagraphStyle}%
+  \setbeforesubsubsecskip{\hbNotePrevSubsubsectionSkip}%
+  \setbeforeparaskip{\hbNotePrevParagraphSkip}%
 }
 
 % XXX where is that 1pt vertical offset FROM?!
-\newcommand*{\phNoteDraw}{%
-  \settowidth{\phNoteBoxWidth}{\usebox{\phNoteBox}}%
-  \settoheight{\phNoteBoxHeight}{\usebox{\phNoteBox}}%
-  \settodepth{\phNoteBoxDepth}{\usebox{\phNoteBox}}%
+\newcommand*{\hbNoteDraw}{%
+  \settowidth{\hbNoteBoxWidth}{\usebox{\hbNoteBox}}%
+  \settoheight{\hbNoteBoxHeight}{\usebox{\hbNoteBox}}%
+  \settodepth{\hbNoteBoxDepth}{\usebox{\hbNoteBox}}%
   \TPoptions{absolute=false}%
-  \noindent\vspace*{\phNoteBH}\hspace*{\phNoteBW}%
-  \begin{textblock*}{\linewidth}(0pt,-\phNoteBH+1pt)
-    \scalebox{1}[-1]{\includegraphics[width=1.307\phNoteBH,height=\phNoteBH]{assets/note-corner}}
+  \noindent\vspace*{\hbNoteBH}\hspace*{\hbNoteBW}%
+  \begin{textblock*}{\linewidth}(0pt,-\hbNoteBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=1.307\hbNoteBH,height=\hbNoteBH]{assets/note-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(\phNoteBoxWidth-1.307\phNoteBH,-\phNoteBH+1pt)
-    \scalebox{-1}[-1]{\includegraphics[width=1.307\phNoteBH,height=\phNoteBH]{assets/note-corner}}
+  \begin{textblock*}{\linewidth}(\hbNoteBoxWidth-1.307\hbNoteBH,-\hbNoteBH+1pt)
+    \scalebox{-1}[-1]{\includegraphics[width=1.307\hbNoteBH,height=\hbNoteBH]{assets/note-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(0pt,\phNoteBoxHeight+\phNoteBoxDepth+1pt)
-    \scalebox{1}[1]{\includegraphics[width=1.307\phNoteBH,height=\phNoteBH]{assets/note-corner}}
+  \begin{textblock*}{\linewidth}(0pt,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \scalebox{1}[1]{\includegraphics[width=1.307\hbNoteBH,height=\hbNoteBH]{assets/note-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(\phNoteBoxWidth-1.307\phNoteBH,\phNoteBoxHeight+\phNoteBoxDepth+1pt)
-    \scalebox{-1}[1]{\includegraphics[width=1.307\phNoteBH,height=\phNoteBH]{assets/note-corner}}
+  \begin{textblock*}{\linewidth}(\hbNoteBoxWidth-1.307\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \scalebox{-1}[1]{\includegraphics[width=1.307\hbNoteBH,height=\hbNoteBH]{assets/note-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(1.306\phNoteBH,-\phNoteBH+1pt)
-    \scalebox{1}[-1]{\includegraphics[width=\phNoteBoxWidth-2.612\phNoteBH,height=\phNoteBH]{assets/note-bottom}}
+  \begin{textblock*}{\linewidth}(1.306\hbNoteBH,-\hbNoteBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=\hbNoteBoxWidth-2.612\hbNoteBH,height=\hbNoteBH]{assets/note-bottom}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(1.306\phNoteBH,\phNoteBoxHeight+\phNoteBoxDepth+1pt)
-    \includegraphics[width=\phNoteBoxWidth-2.612\phNoteBH,height=\phNoteBH]{assets/note-bottom}
+  \begin{textblock*}{\linewidth}(1.306\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \includegraphics[width=\hbNoteBoxWidth-2.612\hbNoteBH,height=\hbNoteBH]{assets/note-bottom}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(-\phNoteBW,1pt)
-    \includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}
+  \begin{textblock*}{\linewidth}(-\hbNoteBW,1pt)
+    \includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(\phNoteBoxWidth,1pt)
-    \reflectbox{\includegraphics[width=\phNoteBW,height=\phNoteBoxHeight+\phNoteBoxDepth]{assets/note-side}}
+  \begin{textblock*}{\linewidth}(\hbNoteBoxWidth,1pt)
+    \reflectbox{\includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}}
   \end{textblock*}%
-  \usebox{\phNoteBox}\vspace*{\phNoteBH}%
+  \usebox{\hbNoteBox}\vspace*{\hbNoteBH}%
   \TPoptions{absolute=true}%
 }
 
-\NewEnviron{phNote}[1][!ht]{%
-\phNoteBefore%
+\NewEnviron{hbNote}[1][!ht]{%
+\hbNoteBefore%
 \begin{figure}[#1]%
-  \sbox{\phNoteBox}{%
+  \sbox{\hbNoteBox}{%
     \colorbox{note}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteBW-2\fboxsep}%
-        \setlength{\parskip}{\phNoteCurparskip}%
-        \setlength{\parindent}{\phNoteCurparindent}%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteBW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
         \noindent\scaly\small\BODY%
       \end{minipage}%
-      \hspace*{\phNotePadding}%
+      \hspace*{\hbNotePadding}%
     }%
   }%
-  \phNoteDraw%
+  \hbNoteDraw%
 \end{figure}%
-\phNoteAfter%
+\hbNoteAfter%
 }
 
-\NewEnviron{phNoteWide}[1][t]{%
-\phNoteBefore%
+\NewEnviron{hbNoteWide}[1][t]{%
+\hbNoteBefore%
 \begin{figure*}[#1]%
-  \sbox{\phNoteBox}{%
+  \sbox{\hbNoteBox}{%
     \colorbox{note}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteBW-2\fboxsep}%
-        \setlength{\parskip}{\phNoteCurparskip}%
-        \setlength{\parindent}{\phNoteCurparindent}%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteBW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
         \noindent\scaly\small\BODY%
       \end{minipage}%
-      \hspace*{\phNotePadding}%
+      \hspace*{\hbNotePadding}%
     }%
   }%
-  \phNoteDraw%
+  \hbNoteDraw%
 \end{figure*}%
-\phNoteAfter%
+\hbNoteAfter%
 }
 
 % XXX same
-\newcommand*{\phNoteDrawVar}{%
-  \settowidth{\phNoteBoxWidth}{\usebox{\phNoteBox}}%
-  \settoheight{\phNoteBoxHeight}{\usebox{\phNoteBox}}%
-  \settodepth{\phNoteBoxDepth}{\usebox{\phNoteBox}}%
+\newcommand*{\hbNoteDrawVar}{%
+  \settowidth{\hbNoteBoxWidth}{\usebox{\hbNoteBox}}%
+  \settoheight{\hbNoteBoxHeight}{\usebox{\hbNoteBox}}%
+  \settodepth{\hbNoteBoxDepth}{\usebox{\hbNoteBox}}%
   \TPoptions{absolute=false}%
-  \noindent\hspace*{\phNoteRW}%
-  \begin{textblock*}{\linewidth}(-.5\phNoteRW,1pt-\phNotePS)
-  \includegraphics[width=\phNoteBoxWidth+\phNoteRW,height=\phNotePS]{assets/note-var-top}
+  \noindent\hspace*{\hbNoteRW}%
+  \begin{textblock*}{\linewidth}(-.5\hbNoteRW,1pt-\hbNotePS)
+  \includegraphics[width=\hbNoteBoxWidth+\hbNoteRW,height=\hbNotePS]{assets/note-var-top}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(-.5\phNoteRW,1pt+\phNoteBoxHeight+\phNoteBoxDepth)
-  \scalebox{1}[-1]{\includegraphics[width=\phNoteBoxWidth+\phNoteRW,height=\phNotePS]{assets/note-var-top}}
+  \begin{textblock*}{\linewidth}(-.5\hbNoteRW,1pt+\hbNoteBoxHeight+\hbNoteBoxDepth)
+  \scalebox{1}[-1]{\includegraphics[width=\hbNoteBoxWidth+\hbNoteRW,height=\hbNotePS]{assets/note-var-top}}
   \end{textblock*}%
-  \begin{textblock*}{\phNotePS}(-.5\phNotePS-.5\phNoteRW,1pt-\phNotePS)
-  \includegraphics[width=\phNotePS,height=\phNotePS]{assets/note-var-corner}
+  \begin{textblock*}{\hbNotePS}(-.5\hbNotePS-.5\hbNoteRW,1pt-\hbNotePS)
+  \includegraphics[width=\hbNotePS,height=\hbNotePS]{assets/note-var-corner}
   \end{textblock*}%
-  \begin{textblock*}{\phNotePS}(\phNoteBoxWidth+.5\phNoteRW-.5\phNotePS,1pt-\phNotePS)
-  \includegraphics[width=\phNotePS,height=\phNotePS]{assets/note-var-corner}
+  \begin{textblock*}{\hbNotePS}(\hbNoteBoxWidth+.5\hbNoteRW-.5\hbNotePS,1pt-\hbNotePS)
+  \includegraphics[width=\hbNotePS,height=\hbNotePS]{assets/note-var-corner}
   \end{textblock*}%
-  \begin{textblock*}{\phNotePS}(-.5\phNotePS-.5\phNoteRW,1pt+\phNoteBoxHeight+\phNoteBoxDepth)
-  \includegraphics[width=\phNotePS,height=\phNotePS]{assets/note-var-corner}
+  \begin{textblock*}{\hbNotePS}(-.5\hbNotePS-.5\hbNoteRW,1pt+\hbNoteBoxHeight+\hbNoteBoxDepth)
+  \includegraphics[width=\hbNotePS,height=\hbNotePS]{assets/note-var-corner}
   \end{textblock*}%
-  \begin{textblock*}{\phNotePS}(\phNoteBoxWidth+.5\phNoteRW-.5\phNotePS,1pt+\phNoteBoxHeight+\phNoteBoxDepth)
-  \includegraphics[width=\phNotePS,height=\phNotePS]{assets/note-var-corner}
+  \begin{textblock*}{\hbNotePS}(\hbNoteBoxWidth+.5\hbNoteRW-.5\hbNotePS,1pt+\hbNoteBoxHeight+\hbNoteBoxDepth)
+  \includegraphics[width=\hbNotePS,height=\hbNotePS]{assets/note-var-corner}
   \end{textblock*}%
-  \begin{textblock*}{\phNoteRW}(-\phNoteRW,1pt-.5\phNotePS)
-  {\color{chapter}\rule{\phNoteRW}{\phNoteBoxHeight+\phNoteBoxDepth+\phNotePS}}
+  \begin{textblock*}{\hbNoteRW}(-\hbNoteRW,1pt-.5\hbNotePS)
+  {\color{chapter}\rule{\hbNoteRW}{\hbNoteBoxHeight+\hbNoteBoxDepth+\hbNotePS}}
   \end{textblock*}%
-  \begin{textblock*}{\phNoteRW}(\phNoteBoxWidth,1pt-.5\phNotePS)
-  {\color{chapter}\rule{\phNoteRW}{\phNoteBoxHeight+\phNoteBoxDepth+\phNotePS}}
+  \begin{textblock*}{\hbNoteRW}(\hbNoteBoxWidth,1pt-.5\hbNotePS)
+  {\color{chapter}\rule{\hbNoteRW}{\hbNoteBoxHeight+\hbNoteBoxDepth+\hbNotePS}}
   \end{textblock*}%
-  \usebox{\phNoteBox}\hspace*{\phNoteRW}%
+  \usebox{\hbNoteBox}\hspace*{\hbNoteRW}%
   \TPoptions{absolute=true}%
 }
 
-\NewEnviron{phNote2}[1][!ht]{%
-\phNoteBefore%
+\NewEnviron{hbNote2}[1][!ht]{%
+\hbNoteBefore%
 \begin{figure}[#1]%
-  \sbox{\phNoteBox}{%
+  \sbox{\hbNoteBox}{%
     \colorbox{white}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteRW-2\fboxsep}%
-        \setlength{\parskip}{\phNoteCurparskip}%
-        \setlength{\parindent}{\phNoteCurparindent}%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteRW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
         \noindent\scaly\small\BODY%
       \end{minipage}%
-      \hspace*{\phNotePadding}%
+      \hspace*{\hbNotePadding}%
     }%
   }%
-  \phNoteDrawVar%
+  \hbNoteDrawVar%
 \end{figure}%
-\phNoteAfter%
+\hbNoteAfter%
 }
 
-\NewEnviron{phNoteWide2}[1][t]{%
-\phNoteBefore%
+\NewEnviron{hbNoteWide2}[1][t]{%
+\hbNoteBefore%
 \begin{figure*}[#1]%
-  \sbox{\phNoteBox}{%
+  \sbox{\hbNoteBox}{%
     \colorbox{white}{%
-      \hspace*{\phNotePadding}\begin{minipage}[b]{\linewidth-2\phNotePadding-2\phNoteRW-2\fboxsep}%
-        \setlength{\parskip}{\phNoteCurparskip}%
-        \setlength{\parindent}{\phNoteCurparindent}%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteRW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
         \noindent\scaly\small\BODY%
       \end{minipage}%
-      \hspace*{\phNotePadding}%
+      \hspace*{\hbNotePadding}%
     }%
   }%
-  \phNoteDrawVar%
+  \hbNoteDrawVar%
 \end{figure*}%
-\phNoteAfter%
+\hbNoteAfter%
 }

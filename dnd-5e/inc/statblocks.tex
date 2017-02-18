@@ -9,55 +9,55 @@
 % License, Version 2, as published by Sam Hocevar. See
 % http://sam.zoy.org/wtfpl/COPYING for more details.
 
-\newcommand*{\phSBPrevdesclabel}{}
-\newcommand*{\phSBPrevsubsecstyle}{}
-\newcommand*{\phSBPrevsubsubsecstyle}{}
-\newcommand*{\phSBPrevparastyle}{}
+\newcommand*{\hbSBPrevdesclabel}{}
+\newcommand*{\hbSBPrevsubsecstyle}{}
+\newcommand*{\hbSBPrevsubsubsecstyle}{}
+\newcommand*{\hbSBPrevparastyle}{}
 
-\newlength{\phSBPrevparaskip}
-\newlength{\phSBPrevsubsubsecskip}
+\newlength{\hbSBPrevparaskip}
+\newlength{\hbSBPrevsubsubsecskip}
 
-\newcommand*{\phSBType}[1]{\textit{#1}}
-\newcommand*{\phSBSep}{%
+\newcommand*{\hbSBType}[1]{\textit{#1}}
+\newcommand*{\hbSBSep}{%
   \leavevmode\\*%
   \noindent\includegraphics[height=5pt,width=\linewidth]{assets/stat-block-separator}\\*%
   \noindent%
 }
-\newcommand*{\phModifier}[1]{\FPeval{\result}{round((2*trunc(#1/2,0)-10)/2,0)}\ifnum\result>-1 +\result\else\result\fi}
-\newcommand*{\phSBAttributes}[6]{%
+\newcommand*{\hbModifier}[1]{\FPeval{\result}{round((2*trunc(#1/2,0)-10)/2,0)}\ifnum\result>-1 +\result\else\result\fi}
+\newcommand*{\hbSBAttributes}[6]{%
   {\color{chapter}%
   \begin{tabularx}{\linewidth}{@{}*{6}{>{\centering\arraybackslash}X@{}}}
     \textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA} \\
-    #1 (\phModifier{#1}) & #2 (\phModifier{#2}) & #3 (\phModifier{#3}) & #4 (\phModifier{#4}) & #5 (\phModifier{#5}) & #6 (\phModifier{#6})
+    #1 (\hbModifier{#1}) & #2 (\hbModifier{#2}) & #3 (\hbModifier{#3}) & #4 (\hbModifier{#4}) & #5 (\hbModifier{#5}) & #6 (\hbModifier{#6})
   \end{tabularx}}%
 }
-\newcommand*{\phSBsubsec}[1]{\color{chapter}\Huge\mreaves#1\vspace*{-7pt}}
-\newcommand*{\phSBsubsubsec}[1]{\color{chapter}\LARGE\scaly\scshape\noindent\begin{minipage}{\linewidth}#1\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{3pt}}
+\newcommand*{\hbSBsubsec}[1]{\color{chapter}\Huge\mreaves#1\vspace*{-7pt}}
+\newcommand*{\hbSBsubsubsec}[1]{\color{chapter}\LARGE\scaly\scshape\noindent\begin{minipage}{\linewidth}#1\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{3pt}}
 
-\NewEnviron{phStatBlockDescription}{%
-  \renewcommand*{\phSBPrevdesclabel}{\descriptionlabel}%
+\NewEnviron{hbStatBlockDescription}{%
+  \renewcommand*{\hbSBPrevdesclabel}{\descriptionlabel}%
   \renewcommand*{\descriptionlabel}{\color{chapter}\hspace\labelsep\scaly\bfseries}%
   \begin{description}\tightlist\setlength{\labelsep}{3pt}\color{chapter}%
     \vspace*{-\topsep}\BODY\vspace*{-\topsep}%
   \end{description}%
-  \renewcommand*{\descriptionlabel}{\phSBPrevdesclabel}%
+  \renewcommand*{\descriptionlabel}{\hbSBPrevdesclabel}%
 }
 
-\NewEnviron{phStatBlock}{%
-  \renewcommand*{\phSBPrevparastyle}{\paraheadstyle}%
-  \renewcommand*{\phSBPrevsubsecstyle}{\subsecheadstyle}%
-  \renewcommand*{\phSBPrevsubsubsecstyle}{\subsubsecheadstyle}%
+\NewEnviron{hbStatBlock}{%
+  \renewcommand*{\hbSBPrevparastyle}{\paraheadstyle}%
+  \renewcommand*{\hbSBPrevsubsecstyle}{\subsecheadstyle}%
+  \renewcommand*{\hbSBPrevsubsubsecstyle}{\subsubsecheadstyle}%
   \setparaheadstyle{\scaly\small\bfseries}%
-  \setsubsecheadstyle{\phSBsubsec}%
-  \setsubsubsecheadstyle{\phSBsubsubsec}%
-  \setlength{\phSBPrevparaskip}{\beforeparaskip}%
-  \setlength{\phSBPrevsubsubsecskip}{\beforesubsubsecskip}%
+  \setsubsecheadstyle{\hbSBsubsec}%
+  \setsubsubsecheadstyle{\hbSBsubsubsec}%
+  \setlength{\hbSBPrevparaskip}{\beforeparaskip}%
+  \setlength{\hbSBPrevsubsubsecskip}{\beforesubsubsecskip}%
   \setbeforeparaskip{.5em}%
   \setbeforesubsubsecskip{.5em}%
   \medbreak{\scaly\small\BODY}\medbreak%
-  \setparaheadstyle{\phSBPrevparastyle}%
-  \setsubsecheadstyle{\phSBPrevsubsecstyle}%
-  \setsubsubsecheadstyle{\phSBPrevsubsubsecstyle}%
-  \setbeforeparaskip{\phSBPrevparaskip}%
-  \setbeforesubsubsecskip{\phSBPrevsubsubsecskip}%
+  \setparaheadstyle{\hbSBPrevparastyle}%
+  \setsubsecheadstyle{\hbSBPrevsubsecstyle}%
+  \setsubsubsecheadstyle{\hbSBPrevsubsubsecstyle}%
+  \setbeforeparaskip{\hbSBPrevparaskip}%
+  \setbeforesubsubsecskip{\hbSBPrevsubsubsecskip}%
 }
