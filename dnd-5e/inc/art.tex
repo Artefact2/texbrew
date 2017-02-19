@@ -13,13 +13,22 @@
 \newlength{\hbArtFakeHeight}
 \newlength{\hbArtFakeHeightHack}
 
+% XXX why the 1pt offset?
+\newlength{\hbArtLeftOffset}
+\setlength{\hbArtLeftOffset}{\maxof{\foremargin}{\spinemargin}+1pt}
+\newlength{\hbArtOvershootWidth}
+\setlength{\hbArtOvershootWidth}{\maxof{\foremargin}{\spinemargin}-\minof{\foremargin}{\spinemargin}+2pt}
+\newlength{\hbArtTopOffset}
+\setlength{\hbArtTopOffset}{\uppermargin}
+\newlength{\hbArtBottomOffset}
+\setlength{\hbArtBottomOffset}{\paperheight-\uppermargin-\textheight}
+
 % XXX is it wise to use floats for this? they have a LOT of issues. Is
 % it possible to alter the margins of the CURRENT page?  Look into
 % geometry (inserts \clearpage, not good) and/or changepage (nope,
 % doesn't work with memoir it seems?)
 
-% XXX: gets displayed ABOVE footer, this is annoying (hides footer decoration and page number)
-% XXX: left margin is wrong half the time (overshoot)
+% XXX: left margin is wrong half the time, we need to overshoot
 
 % Real W/H ratio (per the picture spec), fictional W/H ratio (wrt margins), Filename
 \newcommand*{\hbWideBottomArt}[3]{%
@@ -28,13 +37,11 @@
   \FPeval{\result}{1/#2}%
   \setlength{\hbArtFakeHeight}{\result\paperwidth}%
   \begin{figure*}[!b]%
-    \TPoptions{absolute=false}%
     % XXX 1pt offset?
-    \begin{textblock*}{\paperwidth}(-20mm-1pt,\hbArtFakeHeight-\hbArtRealHeight)%
-      \includegraphics[width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
-    \end{textblock*}%
-    \TPoptions{absolute=true}%
-    \rule{0pt}{\hbArtFakeHeight-20mm}%
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{\hbArtFakeHeight-\hbArtRealHeight}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
+    \rule{0pt}{\maxof{0pt}{\hbArtFakeHeight-\hbArtBottomOffset}}%
   \end{figure*}%
 }
 
@@ -44,12 +51,10 @@
   \FPeval{\result}{1/#2}%
   \setlength{\hbArtFakeHeight}{\result\paperwidth}%
   \begin{figure*}[!t]%
-    \TPoptions{absolute=false}%
-    \begin{textblock*}{\paperwidth}(-20mm-1pt,-15mm)%
-      \includegraphics[width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
-    \end{textblock*}%
-    \TPoptions{absolute=true}%
-    \rule{0pt}{\hbArtFakeHeight-15mm}%
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{-\hbArtTopOffset}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
+    \rule{0pt}{\maxof{0pt}{\hbArtFakeHeight-\hbArtTopOffset}}%
   \end{figure*}%
 }
 
@@ -61,14 +66,12 @@
   \setlength{\hbArtRealHeight}{\result\paperwidth}%
   \FPeval{\result}{1/#2}%
   \setlength{\hbArtFakeHeight}{\result\paperwidth}%
-  \setlength{\hbArtFakeHeightHack}{\hbArtFakeHeight-20mm}%
+  \setlength{\hbArtFakeHeightHack}{\maxof{0pt}{\hbArtFakeHeight-\hbArtBottomOffset}}%
   \renewcommand*{\hbWideBottomArtFirstPageFix}{\enlargethispage{-\hbArtFakeHeightHack}}%
   \begin{figure}[!b]%
-    \TPoptions{absolute=false}%
-    \begin{textblock*}{\paperwidth}(-20mm-1pt,\hbArtFakeHeight-\hbArtRealHeight)%
-      \includegraphics[draft=false,width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
-    \end{textblock*}%
-    \TPoptions{absolute=true}%
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{\hbArtFakeHeight-\hbArtRealHeight}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
     \rule{0pt}{\hbArtFakeHeightHack}%
   \end{figure}%
 }

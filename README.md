@@ -32,7 +32,7 @@ fonts (with fontspec).
 Demos
 =====
 
-* **For D&D 5e: https://artefact2.github.io/texbrew/dnd-5e/skel.pdf**
+* **For D&D 5e: https://artefact2.github.io/texbrew/dnd-5e/skel.pdf** ([draft version](https://artefact2.github.io/texbrew/dnd-5e/draft-skel.pdf))
 
 Usage
 =====
@@ -55,4 +55,5 @@ Todo
 ====
 
 * overflowing art
+* [fix XXXs](https://github.com/Artefact2/texbrew/search?utf8=%E2%9C%93&q=XXX)
 * fix bugs

@@ -18,29 +18,29 @@
 \renewcommand*{\afterpartskip}{%
   \newpage%
   \AddThispageHook{%
-    \begin{textblock*}{\paperwidth}(0pt,0pt)%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartSubcover}
-    \end{textblock*}%
-    \begin{textblock*}{\paperwidth}(0pt,0pt)%
+    \end{tb*}%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{assets/full-page-decoration}
-    \end{textblock*}%
+    \end{tb*}%
   }%
   \newpage%
 }
 \renewcommand*{\printpartname}{\AddThispageHook{%
     \thispagestyle{part}%
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartCover}
-    \end{textblock*}%
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
+    \end{tb*}%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth]{assets/header-part-circ}
-    \end{textblock*}%
-    \begin{textblock*}{.5\paperwidth}(0pt,0pt)
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{0pt}{0pt}%
       \includegraphics[width=.5\paperwidth]{assets/header-part}
-    \end{textblock*}%
-    \begin{textblock*}{.5\paperwidth}(.5\paperwidth,0pt)
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{.5\paperwidth}{0pt}
       \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-part}}
-    \end{textblock*}%
+    \end{tb*}%
   }%
   \hspace*{-8pt}\nodesto\fontsize{64pt}{64pt}\selectfont\color{chapter}PART%
 }
@@ -49,12 +49,12 @@
 
 % Chapters
 \newcommand*{\hbChapterHeader}{\AddThispageHook{%
-    \begin{textblock*}{.5\paperwidth}(0pt,0pt)%
+    \begin{tb*}{.5\paperwidth}{0pt}{0pt}%
       \includegraphics[width=.5\paperwidth]{assets/header-chapter}
-    \end{textblock*}%
-    \begin{textblock*}{.5\paperwidth}(.5\paperwidth,0pt)%
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{.5\paperwidth}{0pt}%
       \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-chapter}}
-    \end{textblock*}%
+    \end{tb*}%
   }%
 }
 \renewcommand*{\chaptitlefont}{\color{chapter}\HUGE\mreaves}
@@ -145,26 +145,19 @@
   \onecolumn%
   \thispagestyle{empty}%
   \AddThispageHook{%
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{\hbCover}
-    \end{textblock*}%
-    \begin{textblock*}{3cm}(.5\paperwidth-1.5cm,1cm)
-      \includegraphics[width=3cm]{assets/dnd-logo-initials}
-    \end{textblock*}%
-    \begin{textblock*}{\paperwidth-4cm}(2cm,\paperheight-4cm)
-      \begin{center}
-        \LARGE
-        % XXX: font doesn't look right
-        \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}
-      \end{center}
-    \end{textblock*}%
-  }  %
-  \vspace*{15mm}%  
+    \end{tb*}%
+  }%
   \begin{center}%
+    \vspace*{-15mm}\includegraphics[width=3cm]{assets/dnd-logo-initials}\\*\vspace*{15mm}%
     \nodesto%
     \fontsize{48pt}{48pt}\selectfont%
     \fillstroke{[1]}{[0]}{1.5}{\MakeUppercase\hbTitle}\\*%
-    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}%
+    \normalfont\normalsize\includegraphics[width=.5\paperwidth]{assets/separator}%
+    \LARGE\vfill%
+    % XXX: font doesn't look right
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}%
   \end{center}%
   \clearpage%
   \twocolumn%
@@ -174,21 +167,18 @@
   \onecolumn%
   \thispagestyle{empty}%
   \AddThispageHook{
-    \begin{textblock*}{\paperwidth}(0pt,0pt)
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcover}
-    \end{textblock*}%
-    \begin{textblock*}{1.5cm}(.5\paperwidth-.75cm,\paperheight-3cm)
-      \includegraphics[width=1.5cm]{assets/dnd-logo-amp}
-    \end{textblock*}%
+    \end{tb*}%
   }%
-  \vspace*{15mm}%
   \begin{center}%
     \nodesto%
     \fontsize{48pt}{48pt}\selectfont%
-    \MakeUppercase%
-    \hbTitle\\*%
-    \vspace*{-30pt}\includegraphics[width=.5\paperwidth]{assets/separator}%
-  \end{center}
+    \MakeUppercase\hbTitle\\*%
+    \normalfont\normalsize\includegraphics[width=.5\paperwidth]{assets/separator}%
+    \LARGE\vfill%
+    \includegraphics[width=1.5cm]{assets/dnd-logo-amp}%
+  \end{center}%
   \clearpage%
   \twocolumn%
 }

@@ -9,11 +9,44 @@
 % License, Version 2, as published by Sam Hocevar. See
 % http://sam.zoy.org/wtfpl/COPYING for more details.
 
+\NewEnviron{tb*}[3]{%
+\begin{textblock*}{#1}(\ox+#2,\oy+#3)\BODY\end{textblock*}%
+}
+
+\NewEnviron{rtb*}[3]{%
+\TPoptions{absolute=false}%
+\begin{textblock*}{#1}(#2,#3)\BODY\end{textblock*}%
+\TPoptions{absolute=true}%
+}
+
+\newcommand*{\fakeminipage}[1]{%
+\begin{minipage}[b]{0pt}%
+\setlength{\vfuzz}{\stockwidth}%
+\setlength{\hfuzz}{\stockheight}%
+#1\end{minipage}%
+\setlength{\vfuzz}{0pt}%
+\setlength{\hfuzz}{0pt}%
+}
+
+\newlength{\ox}
+\newlength{\oy}
+
+\ifdefined\isdraft
+\stockaiii
 \pageaiv
-\setulmarginsandblock{15mm}{20mm}{1}
+\setlength{\ox}{.5\stockwidth-.5\paperwidth}
+\setlength{\oy}{.5\stockheight-.5\paperheight}
+\settrims{\oy}{\ox}
+\else
+\pageaiv
+\setlength{\ox}{0pt}
+\setlength{\oy}{0pt}
+\fi
+
+\setulmarginsandblock{16mm}{20mm}{1}
 \setlrmarginsandblock{20mm}{16mm}{1}
 \setcolsepandrule{8mm}{0mm}
-\setheadfoot{12mm}{12mm}
+\setheadfoot{10mm}{\paperheight-\uppermargin-\textheight-6mm}
 \setheaderspaces{*}{0mm}{*}
 \settypeoutlayoutunit{mm}
 \checkandfixthelayout
@@ -24,30 +57,28 @@
 \setlength{\parindent}{1em}
 
 % XXX why is this breaking \twocolumn (will reset to one after a part) ?
-\AddEverypageHook{\begin{textblock*}{\paperwidth}(0pt,0pt)%
+\AddEverypageHook{\begin{tb*}{\paperwidth}{0pt}{0pt}%
     \includegraphics[width=\paperwidth,height=\paperheight]{assets/background}%
-\end{textblock*}\twocolumn}
+\end{tb*}\twocolumn}
 
 \makepagestyle{hbRegular}
 \aliaspagestyle{chapter}{hbRegular}
 \aliaspagestyle{part}{hbRegular}
 
 \makeoddfoot{hbRegular}{%
-  \begin{minipage}{0pt}%
-    \hspace*{-20mm}\includegraphics[draft=false,width=\paperwidth]{assets/footer}%
-  \end{minipage}%
-}{}{
-  \color{footer}\mreaves \rightmark \hspace{3mm}\vspace{-1mm} \\
-  \Large\raisebox{2mm}{\begin{minipage}{2cm}\centering\thepage\end{minipage}}\hspace{-20mm}
-}
-\makeevenfoot{hbRegular}{
-  \color{footer}\mreaves \hspace{3mm}\vspace{-1mm} \leftmark \\
-  \Large\hspace{-20mm}\raisebox{2mm}{\begin{minipage}{2cm}\centering\thepage\end{minipage}}
+  \raisebox{-9mm}{\fakeminipage{\hspace*{-\spinemargin}\includegraphics[width=\paperwidth]{assets/footer}}}%
 }{}{%
-  \begin{minipage}{0pt}%
-    \hspace*{-\paperwidth}\hspace*{20mm}\hspace*{-1pt}%
-    \reflectbox{\includegraphics[draft=false,width=\paperwidth]{assets/footer}}%
-  \end{minipage}%
+  \color{footer}\mreaves \rightmark \hspace*{20mm}\hspace*{-\foremargin} \\[-2mm]
+  \begin{minipage}{1cm}\centering\Large\thepage\end{minipage}\hspace*{2pt}\hspace*{-\foremargin}
+}
+\makeevenfoot{hbRegular}{%
+  \color{footer}\mreaves \hspace*{20mm}\hspace*{-\foremargin} \leftmark \\[-2mm]
+  \hspace*{-\foremargin}\hspace*{5pt}\begin{minipage}{1cm}\centering\Large\thepage\end{minipage}
+}{}{%
+  \raisebox{-9mm}{\fakeminipage{%
+    \hspace*{-\paperwidth}\hspace*{\spinemargin}%
+    \reflectbox{\includegraphics[width=\paperwidth]{assets/footer}}%
+  }}%
 }
 
 \makepsmarks{hbRegular}{
