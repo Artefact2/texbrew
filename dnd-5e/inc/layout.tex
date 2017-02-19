@@ -13,6 +13,8 @@
 \setulmarginsandblock{15mm}{20mm}{1}
 \setlrmarginsandblock{20mm}{16mm}{1}
 \setcolsepandrule{8mm}{0mm}
+\setheadfoot{12mm}{12mm}
+\setheaderspaces{*}{0mm}{*}
 \settypeoutlayoutunit{mm}
 \checkandfixthelayout
 
@@ -30,27 +32,22 @@
 \aliaspagestyle{chapter}{hbRegular}
 \aliaspagestyle{part}{hbRegular}
 
-\makeoddfoot{hbRegular}{
-  \begin{textblock*}{\paperwidth}(0pt,\paperheight-12mm)
-    \includegraphics[width=\paperwidth]{assets/footer}
-  \end{textblock*}
-}{
-  \begin{textblock*}{2cm}(\paperwidth-47pt,\paperheight-12mm)
-    \begin{center} \color{footer} \thepage \end{center}
-  \end{textblock*}
-}{
-  \color{footer}\mreaves \rightmark \hspace{.3cm}
+\makeoddfoot{hbRegular}{%
+  \begin{minipage}{0pt}%
+    \hspace*{-20mm}\includegraphics[draft=false,width=\paperwidth]{assets/footer}%
+  \end{minipage}%
+}{}{
+  \color{footer}\mreaves \rightmark \hspace{3mm}\vspace{-1mm} \\
+  \Large\raisebox{2mm}{\begin{minipage}{2cm}\centering\thepage\end{minipage}}\hspace{-20mm}
 }
 \makeevenfoot{hbRegular}{
-  \color{footer}\mreaves \hspace{.3cm} \leftmark
-}{
-  \begin{textblock*}{2cm}(47pt-2cm,\paperheight-12mm)
-    \begin{center} \color{footer} \thepage \end{center}
-  \end{textblock*}
-}{
-  \begin{textblock*}{\paperwidth}(0pt,\paperheight-12mm)
-    \reflectbox{\includegraphics[width=\paperwidth]{assets/footer}}
-  \end{textblock*}
+  \color{footer}\mreaves \hspace{3mm}\vspace{-1mm} \leftmark \\
+  \Large\hspace{-20mm}\raisebox{2mm}{\begin{minipage}{2cm}\centering\thepage\end{minipage}}
+}{}{%
+  \begin{minipage}{0pt}%
+    \hspace*{-\paperwidth}\hspace*{20mm}\hspace*{-1pt}%
+    \reflectbox{\includegraphics[draft=false,width=\paperwidth]{assets/footer}}%
+  \end{minipage}%
 }
 
 \makepsmarks{hbRegular}{
