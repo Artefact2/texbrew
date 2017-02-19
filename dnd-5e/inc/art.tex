@@ -8,3 +8,48 @@
 % modify it under the terms of the Do What The Fuck You Want To Public
 % License, Version 2, as published by Sam Hocevar. See
 % http://sam.zoy.org/wtfpl/COPYING for more details.
+
+\newlength{\hbArtRealHeight}
+\newlength{\hbArtFakeHeight}
+
+% XXX is it wise to use floats for this? they have a LOT of issues. Is
+% it possible to alter the margins of the CURRENT page?  Look into
+% geometry (inserts \clearpage, not good) and/or changepage (nope,
+% doesn't work with memoir it seems?)
+
+% XXX: gets displayed ABOVE footer, this is annoying (hides footer decoration and page number)
+% XXX: left margin is wrong half the time (overshoot)
+% XXX: wide floats will never show up on a chapter page? see https://tug.org/TUGboat/tb35-3/tb111beet-banner.pdf
+
+% Real W/H ratio (per the picture spec), fictional W/H ratio (wrt margins), Filename
+\newcommand*{\hbWideBottomArt}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \FPeval{\result}{1/#2}%
+  \setlength{\hbArtFakeHeight}{\result\paperwidth}%
+  \begin{figure*}[!b]%
+    \TPoptions{absolute=false}%
+    % XXX 1pt offset?
+    \begin{textblock*}{\paperwidth}(-20mm-1pt,\hbArtFakeHeight-\hbArtRealHeight)%
+      \includegraphics[width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
+    \end{textblock*}%
+    \TPoptions{absolute=true}%
+    \rule{0pt}{\hbArtFakeHeight-20mm}%
+  \end{figure*}%
+}
+
+\newcommand*{\hbWideTopArt}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \FPeval{\result}{1/#2}%
+  \setlength{\hbArtFakeHeight}{\result\paperwidth}%
+  \begin{figure*}[!t]%
+    \TPoptions{absolute=false}%
+    % XXX 1pt offset?
+    \begin{textblock*}{\paperwidth}(-20mm-1pt,-15mm)%
+      \includegraphics[width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
+    \end{textblock*}%
+    \TPoptions{absolute=true}%
+    \rule{0pt}{\hbArtFakeHeight-15mm}%
+  \end{figure*}%
+}
