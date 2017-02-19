@@ -15,18 +15,7 @@
 
 \renewcommand*{\thepart}{\arabic{part}}
 \renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
-\renewcommand*{\afterpartskip}{%
-  \newpage%
-  \AddThispageHook{%
-    \begin{tb*}{\paperwidth}{0pt}{0pt}%
-      \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartSubcover}
-    \end{tb*}%
-    \begin{tb*}{\paperwidth}{0pt}{0pt}%
-      \includegraphics[width=\paperwidth,height=\paperheight]{assets/full-page-decoration}
-    \end{tb*}%
-  }%
-  \newpage%
-}
+\renewcommand*{\afterpartskip}{\hbFullPageArt{\hbPartSubcover}}
 \renewcommand*{\printpartname}{\AddThispageHook{%
     \thispagestyle{part}%
     \begin{tb*}{\paperwidth}{0pt}{0pt}%
