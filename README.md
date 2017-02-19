@@ -54,6 +54,6 @@ To start your own document:
 Todo
 ====
 
-* overflowing art
+* art overlays (under tables, etc.)
 * [fix XXXs](https://github.com/Artefact2/texbrew/search?utf8=%E2%9C%93&q=XXX)
 * fix bugs

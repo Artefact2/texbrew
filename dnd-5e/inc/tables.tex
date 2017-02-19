@@ -78,7 +78,7 @@
   \medbreak\noindent\begin{tabularx}{\linewidth}{#1}\BODY\end{tabularx}\medbreak%
 }
 
-\NewEnviron{hbNarrowTable}[3][!ht]{%
+\NewEnviron{hbNarrowTable}[3][h]{%
   \begin{table}[#1]%
     \caption{#2}%
     \hbTableBefore%
@@ -94,7 +94,7 @@
   \end{table*}%
 }
 
-\NewEnviron{hbFancyTable}[3][!ht]{%
+\NewEnviron{hbFancyTable}[3][h]{%
   \begin{table}[#1]%
     \hbTableBefore%
     \sbox{\hbTableBox}{\colorbox{white}{\begin{minipage}{\linewidth-2\fboxsep}%
