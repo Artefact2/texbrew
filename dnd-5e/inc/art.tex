@@ -11,6 +11,7 @@
 
 \newlength{\hbArtRealHeight}
 \newlength{\hbArtFakeHeight}
+\newlength{\hbArtFakeHeightHack}
 
 % XXX is it wise to use floats for this? they have a LOT of issues. Is
 % it possible to alter the margins of the CURRENT page?  Look into
@@ -19,7 +20,6 @@
 
 % XXX: gets displayed ABOVE footer, this is annoying (hides footer decoration and page number)
 % XXX: left margin is wrong half the time (overshoot)
-% XXX: wide floats will never show up on a chapter page? see https://tug.org/TUGboat/tb35-3/tb111beet-banner.pdf
 
 % Real W/H ratio (per the picture spec), fictional W/H ratio (wrt margins), Filename
 \newcommand*{\hbWideBottomArt}[3]{%
@@ -45,11 +45,30 @@
   \setlength{\hbArtFakeHeight}{\result\paperwidth}%
   \begin{figure*}[!t]%
     \TPoptions{absolute=false}%
-    % XXX 1pt offset?
     \begin{textblock*}{\paperwidth}(-20mm-1pt,-15mm)%
       \includegraphics[width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
     \end{textblock*}%
     \TPoptions{absolute=true}%
     \rule{0pt}{\hbArtFakeHeight-15mm}%
   \end{figure*}%
+}
+
+% XXX: https://tug.org/TUGboat/tb35-3/tb111beet-banner.pdf
+% It's ugly and limited, but also the best TeX can do
+\newcommand*{\hbWideBottomArtFirstPageFix}{}
+\newcommand*{\hbWideBottomArtFirstPage}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \FPeval{\result}{1/#2}%
+  \setlength{\hbArtFakeHeight}{\result\paperwidth}%
+  \setlength{\hbArtFakeHeightHack}{\hbArtFakeHeight-20mm}%
+  \renewcommand*{\hbWideBottomArtFirstPageFix}{\enlargethispage{-\hbArtFakeHeightHack}}%
+  \begin{figure}[!b]%
+    \TPoptions{absolute=false}%
+    \begin{textblock*}{\paperwidth}(-20mm-1pt,\hbArtFakeHeight-\hbArtRealHeight)%
+      \includegraphics[draft=false,width=\paperwidth+5mm,height=\hbArtRealHeight]{#3}
+    \end{textblock*}%
+    \TPoptions{absolute=true}%
+    \rule{0pt}{\hbArtFakeHeightHack}%
+  \end{figure}%
 }
