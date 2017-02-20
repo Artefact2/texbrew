@@ -46,7 +46,7 @@
     \end{tb*}%
   }%
 }
-\renewcommand*{\chaptitlefont}{\color{chapter}\HUGE\mreaves}
+\renewcommand*{\chaptitlefont}{\color{chapter}\HUGE\mreaves\raggedright}
 \renewcommand*{\printchaptername}{}
 \renewcommand*{\chapternamenum}{}
 \renewcommand*{\chapnumfont}{\chaptitlefont}
@@ -55,8 +55,8 @@
 \makeatother
 \renewcommand*{\afterchapternum}{}
 \renewcommand*{\printchapternonum}{\hbChapterHeader}
-\setlength{\beforechapskip}{-30pt} % XXX ???????
-\setlength{\afterchapskip}{10pt}
+\renewcommand*{\beforechapskip}{0pt}
+\renewcommand*{\afterchapskip}{\aftersecskip}
 
 \newcommand*{\hbRootChapter}[1]{%
   \chapter*{#1}
@@ -85,16 +85,21 @@
 
 % Sections
 \setsecnumformat{}
-\setsecheadstyle{\color{chapter}\HUGE\mreaves}
-\setaftersecskip{1pt}
+\setsecheadstyle{\color{chapter}\Huge\mreaves\raggedright}
 
 % Subsections
-\newcommand{\ruledsubsec}[1]{\color{chapter}\Huge\mreaves\noindent\begin{minipage}{\linewidth}#1\color{subsecrule}\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{-2pt}}
+\newcommand{\ruledsubsec}[1]{%
+  \noindent\begin{minipage}{\linewidth}%
+    \color{chapter}\huge\mreaves\raggedright #1%
+    \par\vspace{-\prevdepth}\vspace{1pt}\color{subsecrule}\rule[\baselineskip]{\linewidth}{1pt}\vspace{-\baselineskip}\vspace{2pt}%
+  \end{minipage}%
+}
 \setsubsecheadstyle{\ruledsubsec}
+\renewcommand*{\aftersubsecskip}{.1\baselineskip}
 
 % Subsubsections
 \setsubsubsecheadstyle{\color{chapter}\LARGE\mreaves}
-\setaftersubsubsecskip{1pt}
+\renewcommand*{\aftersubsubsecskip}{\aftersubsecskip}
 
 % Paragraphs and subparagraphs
 \setafterparaskip{-3pt}
@@ -107,16 +112,16 @@
 \renewcommand*{\cftpartfont}{\color{chapter}\LARGE\mreaves}
 \renewcommand*{\cftpartname}{Part\space}
 \renewcommand*{\cftpartaftersnum}{:\space}
+\renewcommand*{\cftpartafterpnum}{\vspace{1pt}\\*\noindent\hspace*{-\cftpartnumwidth}\hspace*{-32pt}\color{subsecrule}\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{-2pt}} % XXX: -32pt source?
+\renewcommand*{\cftbeforepartskip}{10pt}
+\renewcommand*{\cftpartnumwidth}{15pt}
 
-\renewcommand*{\cftpartnumwidth}{16pt}
 \renewcommand*{\cftchapterfont}{\color{chapter}\Large\mreaves}
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
 \renewcommand*{\cftchapteraftersnum}{:\space}
 \renewcommand*{\cftchapterindent}{10pt}
 \renewcommand*{\cftbeforechapterskip}{5pt}
-\renewcommand*{\cftpartafterpnum}{\vspace{1pt}\\*\noindent\hspace*{-\cftpartnumwidth}\hspace*{-32pt}\color{subsecrule}\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{-2pt}} % XXX: -32pt source?
-\renewcommand*{\cftbeforepartskip}{10pt}
 
 \renewcommand*{\cftsectionnumwidth}{0pt}
 \renewcommand*{\cftsectionpresnum}{\fontsize{1sp}{0}\selectfont} % XXX
