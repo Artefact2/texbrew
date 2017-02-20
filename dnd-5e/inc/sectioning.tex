@@ -15,7 +15,7 @@
 
 \renewcommand*{\thepart}{\arabic{part}}
 \renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
-\renewcommand*{\afterpartskip}{\hbFullPageArt{\hbPartSubcover}}
+\renewcommand*{\afterpartskip}{\clearpage\hbFullPageArtHook{\hbPartSubcover}}
 \renewcommand*{\printpartname}{\AddThispageHook{%
     \thispagestyle{part}%
     \begin{tb*}{\paperwidth}{0pt}{0pt}%

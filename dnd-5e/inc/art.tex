@@ -75,8 +75,7 @@
   \end{figure}%
 }
 
-\newcommand*{\hbFullPageArt}[1]{%
-  \clearpage%
+\newcommand*{\hbFullPageArtHook}[1]{%
   \AddThispageHook{%
     \begin{tb*}{\paperwidth}{0pt}{0pt}%
       \includegraphics[width=\paperwidth,height=\paperheight]{#1}
@@ -85,7 +84,10 @@
       \includegraphics[width=\paperwidth,height=\paperheight]{assets/full-page-decoration}
     \end{tb*}%
   }%
-  \null\clearpage%
+}
+
+\newcommand*{\hbFullPageArt}[1]{%
+  \clearpage\hbFullPageArtHook{#1}\null\clearpage%
 }
 
 \newcommand*{\hbFloatArt}[2][h]{%
