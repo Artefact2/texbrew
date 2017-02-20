@@ -66,7 +66,6 @@
 
 \newcommand*{\hbAppendix}{%
   \appendix%
-  \settocdepth{part}%
   \makepsmarks{hbRegular}{%
     \renewcommand*{\chaptermark}[1]{\markboth{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}}%
     \renewcommand*{\sectionmark}[1]{}%
@@ -74,8 +73,12 @@
   \pagestyle{hbRegular}%
 }
 
+\newcommand*{\hbFakeToc}[3]{}
 \newcommand*{\hbRootAppendix}[1]{%
+  \let\hbRealToc=\addcontentsline%
+  \let\addcontentsline=\hbFakeToc%
   \chapter{#1}
+  \let\addcontentsline=\hbRealToc%
   \addcontentsline{toc}{part}{Appendix\space\thechapter:\space#1}
   \markboth{#1}{#1}
 }
