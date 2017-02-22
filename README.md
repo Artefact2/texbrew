@@ -32,7 +32,7 @@ fonts (with fontspec).
 Demos
 =====
 
-* **For D&D 5e: https://artefact2.github.io/texbrew/dnd-5e/skel.pdf** ([draft version](https://artefact2.github.io/texbrew/dnd-5e/draft-skel.pdf))
+* **For D&D 5e: https://artefact2.gitlab.io/texbrew/dnd-5e/skel.pdf** ([draft version](https://artefact2.gitlab.io/texbrew/dnd-5e/draft-skel.pdf))
 
 Usage
 =====

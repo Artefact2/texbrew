@@ -1,0 +1,16 @@
+image: artefact2/arch-texlive
+
+variables:
+    GIT_DEPTH: "1"
+
+pages:
+    stage: deploy
+    script:
+    - make -j8
+    - mkdir -p public/dnd-5e
+    - cp dnd-5e/*.pdf public/dnd-5e
+    artifacts:
+        paths:
+        - public
+    only:
+    - master

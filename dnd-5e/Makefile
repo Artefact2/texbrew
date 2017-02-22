@@ -1,5 +1,7 @@
 INCLUDES=$(shell find . -type f -name "*.tex")
 
+all: draft-skel.pdf skel.pdf
+
 draft-%.pdf: %.tex $(INCLUDES)
 	xelatex -halt-on-error -jobname=`echo $@ | rev | cut -b5- | rev` "\def\isdraft{1}\input{$<}"
 	xelatex -halt-on-error -jobname=`echo $@ | rev | cut -b5- | rev` "\def\isdraft{1}\input{$<}"
