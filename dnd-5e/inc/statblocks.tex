@@ -31,8 +31,8 @@
     #1 (\hbModifier{#1}) & #2 (\hbModifier{#2}) & #3 (\hbModifier{#3}) & #4 (\hbModifier{#4}) & #5 (\hbModifier{#5}) & #6 (\hbModifier{#6})
   \end{tabularx}}%
 }
-\newcommand*{\hbSBsubsec}[1]{\color{chapter}\Huge\mreaves#1\vspace*{-7pt}}
-\newcommand*{\hbSBsubsubsec}[1]{\color{chapter}\LARGE\scaly\scshape\noindent\begin{minipage}{\linewidth}#1\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\end{minipage}\vspace*{-\baselineskip}\vspace*{3pt}}
+\newcommand*{\hbSBsubsec}[1]{\color{chapter}\Huge\mreaves#1\vspace*{-2pt}}
+\newcommand*{\hbSBsubsubsec}[1]{\color{chapter}\Large\scaly\scshape #1\par\vspace{-\prevdepth}\vspace{1pt}\hspace{-\parindent}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{2pt}}
 
 \NewEnviron{hbStatBlockDescription}{%
   \renewcommand*{\hbSBPrevdesclabel}{\descriptionlabel}%
