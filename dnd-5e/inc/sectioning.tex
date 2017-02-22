@@ -110,9 +110,15 @@
 \renewcommand*{\cftsectiondotsep}{0.5}
 
 \renewcommand*{\cftpartfont}{\color{chapter}\LARGE\mreaves}
-\renewcommand*{\cftpartname}{Part\space}
+
+\newsavebox{\hbPartname}
+\newlength{\hbPartnamew}
+\sbox{\hbPartname}{\cftpartfont Part\space}
+\settowidth{\hbPartnamew}{\usebox{\hbPartname}}
+\renewcommand*{\cftpartname}{\usebox{\hbPartname}}
+
 \renewcommand*{\cftpartaftersnum}{:\space}
-\renewcommand*{\cftpartafterpnum}{\vspace{1pt}\\*\noindent\hspace*{-\cftpartnumwidth}\hspace*{-32pt}\color{subsecrule}\vspace*{1pt}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{-2pt}} % XXX: -32pt source?
+\renewcommand*{\cftpartafterpnum}{\par\vspace{-\prevdepth}\vspace{1pt}\color{subsecrule}\hspace{-\cftpartnumwidth}\hspace{-\hbPartnamew}\hspace{-\cftpartindent}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{2pt}}
 \renewcommand*{\cftbeforepartskip}{10pt}
 \renewcommand*{\cftpartnumwidth}{15pt}
 
