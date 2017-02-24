@@ -1,0 +1,26 @@
+\documentclass{memoir}
+\usepackage{fp}
+\usepackage{xcolor}
+\usepackage{pgf}
+
+\FPeval{\mmwidth}{.210*\pxwidth}
+\FPeval{\mmheight}{.210*\pxheight}
+
+\setstocksize{\mmheight mm}{\mmwidth mm}
+\settrimmedsize{\mmheight mm}{\mmwidth mm}{*}
+\settypeblocksize{\mmheight mm}{\mmwidth mm}{*}
+\setlrmarginsandblock{0pt}{0pt}{*}
+\setulmarginsandblock{0pt}{0pt}{*}
+\setheadfoot{0pt}{0pt}
+\setheaderspaces{0pt}{*}{*}
+\fixthelayout
+\raggedright
+\pagestyle{empty}
+
+% ref: http://tex.stackexchange.com/a/160484/125447
+% compile with pdflatex, NOT with xelatex!
+
+\pgfdeclaremask{alpha}{\themask}
+\pgfdeclareimage[width=\paperwidth,height=\paperheight,mask=alpha]{img}{\theimage}
+
+\begin{document}\nopagecolor\pgfuseimage{img}\end{document}
