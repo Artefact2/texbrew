@@ -2,7 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 
 % Author: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
-% 
+%
 % This program is free software. It comes without any warranty, to the
 % extent permitted by applicable law. You can redistribute it and/or
 % modify it under the terms of the Do What The Fuck You Want To Public
@@ -102,6 +102,9 @@
 \renewcommand*{\aftersubsubsecskip}{\aftersubsecskip}
 
 % Paragraphs and subparagraphs
+\setbeforeparaskip{\parskip}
+\setparaindent{\parindent}
+\setparaheadstyle{\bfseries}
 \setafterparaskip{-3pt}
 \setaftersubparaskip{-3pt}
 
@@ -119,7 +122,7 @@
 
 \renewcommand*{\cftpartaftersnum}{:\space}
 \renewcommand*{\cftpartafterpnum}{\par\vspace{-\prevdepth}\vspace{1pt}\color{subsecrule}\hspace{-\cftpartnumwidth}\hspace{-\hbPartnamew}\hspace{-\cftpartindent}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{2pt}}
-\renewcommand*{\cftbeforepartskip}{10pt}
+\renewcommand*{\cftbeforepartskip}{10pt plus 10pt}
 \renewcommand*{\cftpartnumwidth}{15pt}
 
 \renewcommand*{\cftchapterfont}{\color{chapter}\Large\mreaves}
