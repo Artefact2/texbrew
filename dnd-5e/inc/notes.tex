@@ -18,6 +18,7 @@
 \newlength{\hbNoteRW}
 \newlength{\hbNotePS}
 \newlength{\hbNoteOL}
+\newlength{\hbNoteSBH}
 \newlength{\hbNotePadding}
 \newlength{\hbNoteBoxWidth}
 \newlength{\hbNoteBoxHeight}
@@ -28,7 +29,8 @@
 \setlength{\hbNoteBH}{6pt} % Border height for note
 \setlength{\hbNoteRW}{1pt} % Rule width for note2
 \setlength{\hbNotePS}{3pt} % Point corner for note2
-\setlength{\hbNoteOL}{3pt} % Overlap for title of monster note
+\setlength{\hbNoteOL}{2pt} % Overlap for title of monster note
+\setlength{\hbNoteSBH}{3pt} % Border height for monster note
 \setlength{\hbNotePadding}{2pt} % Horizontal padding inside notes
 
 \newcommand*{\hbNotePrevSubsubsectionStyle}{}
@@ -202,24 +204,24 @@
   \settoheight{\hbNoteBoxHeight}{\usebox{\hbNoteBox}}%
   \settodepth{\hbNoteBoxDepth}{\usebox{\hbNoteBox}}%
   \TPoptions{absolute=false}%
-  \noindent\vspace*{\hbNoteBH}\hspace*{\hbNoteBW}%
-  \begin{textblock*}{\linewidth}(-\hbNoteOL,-\hbNoteBH+1pt)
-    \scalebox{1}[-1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \noindent\vspace*{\hbNoteSBH}\hspace*{\hbNoteBW}%
+  \begin{textblock*}{\linewidth}(-\hbNoteOL,-\hbNoteSBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=0.869\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteBH,-\hbNoteBH+1pt)
-    \scalebox{-1}[-1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteSBH,-\hbNoteSBH+1pt)
+    \scalebox{-1}[-1]{\includegraphics[width=0.869\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(-\hbNoteOL,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
-    \scalebox{1}[1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \begin{textblock*}{\linewidth}(-\hbNoteOL,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \scalebox{1}[1]{\includegraphics[width=0.869\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
-    \scalebox{-1}[1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteSBH,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \scalebox{-1}[1]{\includegraphics[width=0.869\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-corner}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteBH,-\hbNoteBH+1pt)
-    \scalebox{1}[-1]{\includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteBH,height=\hbNoteBH]{assets/note-monster-top}}
+  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteSBH,-\hbNoteSBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-top}}
   \end{textblock*}%
-  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
-    \includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteBH,height=\hbNoteBH]{assets/note-monster-top}
+  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteSBH,\hbNoteBoxHeight+\hbNoteBoxDepth+1pt)
+    \includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteSBH,height=\hbNoteSBH]{assets/note-monster-top}
   \end{textblock*}%
   \begin{textblock*}{\linewidth}(-0.1pt-\hbNoteBW,1pt)
     \includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}
@@ -227,7 +229,7 @@
   \begin{textblock*}{\linewidth}(0.1pt+\hbNoteBoxWidth,1pt)
     \reflectbox{\includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}}
   \end{textblock*}%
-  \usebox{\hbNoteBox}\vspace*{\hbNoteBH}%
+  \usebox{\hbNoteBox}\vspace*{\hbNoteSBH}%
   \TPoptions{absolute=true}%
 }
 
@@ -266,5 +268,4 @@
 \end{figure*}%
 \hbNoteAfter%
 }
-
 
