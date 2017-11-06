@@ -2,7 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 
 % Author: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
-% 
+%
 % This program is free software. It comes without any warranty, to the
 % extent permitted by applicable law. You can redistribute it and/or
 % modify it under the terms of the Do What The Fuck You Want To Public
@@ -17,6 +17,7 @@
 \newlength{\hbNoteBH}
 \newlength{\hbNoteRW}
 \newlength{\hbNotePS}
+\newlength{\hbNoteOL}
 \newlength{\hbNotePadding}
 \newlength{\hbNoteBoxWidth}
 \newlength{\hbNoteBoxHeight}
@@ -27,6 +28,7 @@
 \setlength{\hbNoteBH}{6pt} % Border height for note
 \setlength{\hbNoteRW}{1pt} % Rule width for note2
 \setlength{\hbNotePS}{3pt} % Point corner for note2
+\setlength{\hbNoteOL}{3pt} % Overlap for title of monster note
 \setlength{\hbNotePadding}{2pt} % Horizontal padding inside notes
 
 \newcommand*{\hbNotePrevSubsubsectionStyle}{}
@@ -193,3 +195,76 @@
 \end{figure*}%
 \hbNoteAfter%
 }
+
+
+\newcommand*{\hbNoteMonsterDraw}{%
+  \settowidth{\hbNoteBoxWidth}{\usebox{\hbNoteBox}}%
+  \settoheight{\hbNoteBoxHeight}{\usebox{\hbNoteBox}}%
+  \settodepth{\hbNoteBoxDepth}{\usebox{\hbNoteBox}}%
+  \TPoptions{absolute=false}%
+  \noindent\vspace*{\hbNoteBH}\hspace*{\hbNoteBW}%
+  \begin{textblock*}{\linewidth}(-\hbNoteOL,-\hbNoteBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteBH,-\hbNoteBH+1pt)
+    \scalebox{-1}[-1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(-\hbNoteOL,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
+    \scalebox{1}[1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(\hbNoteOL+\hbNoteBoxWidth-0.869\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
+    \scalebox{-1}[1]{\includegraphics[width=0.869\hbNoteBH,height=\hbNoteBH]{assets/note-monster-corner}}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteBH,-\hbNoteBH+1pt)
+    \scalebox{1}[-1]{\includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteBH,height=\hbNoteBH]{assets/note-monster-top}}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(-\hbNoteOL+0.869\hbNoteBH,\hbNoteBoxHeight+\hbNoteBoxDepth+3pt)
+    \includegraphics[width=2\hbNoteOL+\hbNoteBoxWidth-1.739\hbNoteBH,height=\hbNoteBH]{assets/note-monster-top}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(-0.1pt-\hbNoteBW,1pt)
+    \includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}
+  \end{textblock*}%
+  \begin{textblock*}{\linewidth}(0.1pt+\hbNoteBoxWidth,1pt)
+    \reflectbox{\includegraphics[width=\hbNoteBW,height=\hbNoteBoxHeight+\hbNoteBoxDepth]{assets/note-side}}
+  \end{textblock*}%
+  \usebox{\hbNoteBox}\vspace*{\hbNoteBH}%
+  \TPoptions{absolute=true}%
+}
+
+\NewEnviron{hbMonsterNote}[1][h]{%
+\hbNoteBefore%
+\begin{figure}[#1]%
+  \sbox{\hbNoteBox}{%
+    \colorbox{statblock}{%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteRW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
+        \noindent\scaly\BODY%
+      \end{minipage}%
+      \hspace*{\hbNotePadding}%
+    }%
+  }%
+  \hbNoteMonsterDraw%
+\end{figure}%
+\hbNoteAfter%
+}
+
+\NewEnviron{hbMonsterNoteWide}[1][t]{%
+\hbNoteBefore%
+\begin{figure*}[#1]%
+  \sbox{\hbNoteBox}{%
+    \colorbox{statblock}{%
+      \hspace*{\hbNotePadding}\begin{minipage}[b]{\linewidth-2\hbNotePadding-2\hbNoteRW-2\fboxsep}%
+        \setlength{\parskip}{\hbNoteCurparskip}%
+        \setlength{\parindent}{\hbNoteCurparindent}%
+        \noindent\scaly\BODY%
+      \end{minipage}%
+      \hspace*{\hbNotePadding}%
+    }%
+  }%
+  \hbNoteMonsterDraw%
+\end{figure*}%
+\hbNoteAfter%
+}
+
+
