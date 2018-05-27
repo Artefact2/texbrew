@@ -147,6 +147,13 @@
 \newcommand{\hbTitle}{Title. Renew me!}
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
+% Back cover page
+\newcommand{\hbBackcoverheader}{Header. Renew me!}
+\newcommand{\hbBackcoverclose}{Closing sentence. Renew me!}
+\newcommand{\hbBackcoversubsubsection}{Content. Renew me!}
+\newcommand{\hbBackcoverlink}[1]{\url{#1}}
+\newcommand{\hbBackcoverlogo}[1]{#1}
+
 \newcommand{\hbMakecover}{
   \onecolumn%
   \thispagestyle{empty}%
@@ -187,4 +194,46 @@
   \end{center}%
   \clearpage%
   \twocolumn%
+}
+
+\newcommand*{\hbBackcover}{assets/backcover}
+\newcommand*{\hbBackcoverImage}{assets/backcoverimage}
+
+\newcommand{\hbMakeBackcover}{
+  \onecolumn%
+  \thispagestyle{empty}%
+  \AddThispageHook{%
+    \begin{tb*}{0.53\paperwidth}{0.53\paperwidth}{0pt}%
+      \hbTopRightArt{.3}{.9}{.75}{\hbBackcoverImage}
+    \end{tb*}%
+    \begin{tb*}{0.50\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=0.50\paperwidth,height=\paperheight]{\hbBackcover}
+    \end{tb*}%
+  }%
+  %\twocolumn%
+\begin{multicols*}{2}
+  \vspace*{2mm}
+\begin{center}
+    \nodesto%
+    \definecolor{Backcoverheadercolor}{HTML}{ff2a1a}
+    \fontsize{36pt}{36pt}\selectfont%
+    \fillstroke{[1]}{[0]}{.5}{\textcolor{Backcoverheadercolor}{\hbBackcoverheader}}\\*%
+\end{center}
+      \begin{flushleft}%
+    \scaly%
+    \fontsize{12pt}{12pt}\selectfont%
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoversubsubsection}}%
+        \end{flushleft}%
+\begin{center}%
+    \includegraphics[width=.25\paperwidth]{assets/diamond}\\%
+  \vspace*{2mm}
+    \scaly%
+    \fontsize{12pt}{12pt}\selectfont%
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverclose}}%
+    \LARGE\vfill%
+    \includegraphics[width=3cm]{\hbBackcoverlogo}
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverlink}}%
+  \end{center}%
+\end{multicols*}
+  \clearpage%
 }
