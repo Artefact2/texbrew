@@ -148,8 +148,7 @@
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
 % Back cover page
-\newcommand{\hbBackcover}{assets/backcover}
-\newcommand{\hbBackcoverImage}{assets/backcoverimage}
+\newcommand{\hbBackcover}{assets/cover}
 \newcommand{\hbBackcoverHeader}{Header. Renew me!}
 \newcommand{\hbBackcoverClose}{Closing sentence. Renew me!}
 \newcommand{\hbBackcoverContent}{Content. Renew me!}
@@ -201,12 +200,12 @@
 \newcommand{\hbMakeBackcover}{%
   \onecolumn%
   \thispagestyle{empty}%
-  \AddThispageHook{%
-    \begin{tb*}{0.53\paperwidth}{0.53\paperwidth}{0pt}%
-      \hbTopRightArt{.3}{.9}{.75}{\hbBackcoverImage}
+  \AddThispageHook{
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbBackcover}
     \end{tb*}%
-    \begin{tb*}{0.50\paperwidth}{0pt}{0pt}%
-      \includegraphics[width=0.50\paperwidth,height=\paperheight]{\hbBackcover}
+    \begin{tb*}{0.55\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=0.55\paperwidth,height=\paperheight]{assets/backcover}
     \end{tb*}%
   }%
   %\twocolumn%
