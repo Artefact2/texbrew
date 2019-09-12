@@ -142,17 +142,19 @@
 \renewcommand*{\cfttableindent}{0pt}
 
 % Cover page
-\newcommand*{\hbCover}{assets/cover}
-\newcommand*{\hbSubcover}{assets/cover2}
+\newcommand{\hbCover}{assets/cover}
+\newcommand{\hbSubcover}{assets/cover2}
 \newcommand{\hbTitle}{Title. Renew me!}
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
 % Back cover page
-\newcommand{\hbBackcoverheader}{Header. Renew me!}
-\newcommand{\hbBackcoverclose}{Closing sentence. Renew me!}
-\newcommand{\hbBackcoversubsubsection}{Content. Renew me!}
-\newcommand{\hbBackcoverlink}[1]{\url{#1}}
-\newcommand{\hbBackcoverlogo}[1]{#1}
+\newcommand{\hbBackcover}{assets/backcover}
+\newcommand{\hbBackcoverImage}{assets/backcoverimage}
+\newcommand{\hbBackcoverHeader}{Header. Renew me!}
+\newcommand{\hbBackcoverClose}{Closing sentence. Renew me!}
+\newcommand{\hbBackcoverContent}{Content. Renew me!}
+\newcommand{\hbBackcoverLink}{\url{https://example.org}}
+\newcommand{\hbBackcoverLogo}{assets/dnd-logo-initials}
 
 \newcommand{\hbMakecover}{
   \onecolumn%
@@ -196,10 +198,7 @@
   \twocolumn%
 }
 
-\newcommand*{\hbBackcover}{assets/backcover}
-\newcommand*{\hbBackcoverImage}{assets/backcoverimage}
-
-\newcommand{\hbMakeBackcover}{
+\newcommand{\hbMakeBackcover}{%
   \onecolumn%
   \thispagestyle{empty}%
   \AddThispageHook{%
@@ -217,22 +216,22 @@
     \nodesto%
     \definecolor{Backcoverheadercolor}{HTML}{ff2a1a}
     \fontsize{36pt}{36pt}\selectfont%
-    \fillstroke{[1]}{[0]}{.5}{\textcolor{Backcoverheadercolor}{\hbBackcoverheader}}\\*%
+    \fillstroke{[1]}{[0]}{.5}{\textcolor{Backcoverheadercolor}{\hbBackcoverHeader}}\\*%
 \end{center}
       \begin{flushleft}%
     \scaly%
     \fontsize{12pt}{12pt}\selectfont%
-    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoversubsubsection}}%
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverContent}}%
         \end{flushleft}%
 \begin{center}%
     \includegraphics[width=.25\paperwidth]{assets/separator}\\%
   \vspace*{2mm}
     \scaly%
     \fontsize{12pt}{12pt}\selectfont%
-    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverclose}}%
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverClose}}%
     \LARGE\vfill%
-    \includegraphics[width=3cm]{\hbBackcoverlogo}
-    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverlink}}%
+    \includegraphics[width=3cm]{\hbBackcoverLogo} \\%
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbBackcoverLink}}%
   \end{center}%
 \end{multicols*}
   \clearpage%
