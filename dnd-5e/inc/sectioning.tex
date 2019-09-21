@@ -144,6 +144,8 @@
 % Cover page
 \newcommand{\hbCover}{assets/cover}
 \newcommand{\hbSubcover}{assets/cover2}
+\newcommand{\hbCoverSplotch}{assets/cover-splotch}
+\newcommand{\hbCoverSplotchText}{\almendra\bfseries{HOMEBREW}}
 \newcommand{\hbTitle}{Title. Renew me!}
 \newcommand{\hbSubtitle}{Subtitle. Renew me!}
 
@@ -169,10 +171,21 @@
     \fontsize{48pt}{48pt}\selectfont%
     \fillstroke{[1]}{[0]}{1.5}{\MakeUppercase\hbTitle}\\*%
     \normalfont\normalsize\includegraphics[width=.5\paperwidth]{assets/separator}%
-    \LARGE\vfill%
-    % XXX: font doesn't look right
-    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}%
   \end{center}%
+  \begin{figure*}[!b]
+    \begin{adjustwidth}{-20mm}{0mm}
+      \color{white}
+      %\vspace*{17.0cm}
+      \begin{overpic}[percent,unit=1mm,scale=.31]{\hbCoverSplotch} 
+        \put(12,5){\huge\hbCoverSplotchText}
+      \end{overpic}
+    \end{adjustwidth}
+    \begin{center}%
+      \LARGE\vfill%
+      % XXX: font doesn't look right
+      \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}%
+    \end{center}%
+  \end{figure*}
   \clearpage%
   \twocolumn%
 }
